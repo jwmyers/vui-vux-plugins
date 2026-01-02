@@ -5,12 +5,5 @@
   "author": {
     "name": "Zero-Day Attack Team",
     "email": "jon@vuivux.com"
-  },
-  "keywords": [
-    "unity",
-    "game-development",
-    "board-sdk",
-    "unity-mcp",
-    "zero-day-attack"
-  ]
+  }
 }
