@@ -1,0 +1,16 @@
+{
+  "name": "zero-day-dev",
+  "version": "0.1.0",
+  "description": "Comprehensive Unity game development assistant for Zero-Day Attack targeting Board hardware",
+  "author": {
+    "name": "Zero-Day Attack Team",
+    "email": "jon@vuivux.com"
+  },
+  "keywords": [
+    "unity",
+    "game-development",
+    "board-sdk",
+    "unity-mcp",
+    "zero-day-attack"
+  ]
+}

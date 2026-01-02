@@ -1,0 +1,12 @@
+{
+  "name": "vui-vux",
+  "owner": {
+    "name": "Jon Myers"
+  },
+  "plugins": [
+    {
+      "name": "zero-day-dev",
+      "source": "./plugins/zero-day-dev"
+    }
+  ]
+}
