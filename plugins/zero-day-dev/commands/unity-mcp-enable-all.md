@@ -14,17 +14,15 @@ Unity MCP tools can return large amounts of data, so normally we have them disab
 
 ## Process
 
-1. Receive information from
+1. Review current AI-Game-Developer-Config.json settings
 
-2. Review current AI-Game-Developer-Config.json settings
-
-3. Apply absolute defaults:
+2. Apply absolute defaults:
 
    - leave all resources `true`
    - leave all prompts `false`
    - set all tools to `true`
 
-4. Save updated configuration and notify the user.
+3. Save updated configuration and notify the user.
 
 ## Configuration File
 

@@ -178,6 +178,21 @@ When modifying objects:
 - [Status of operation]
 ```
 
+## Related Agents
+
+| For This Work | Use Instead |
+|---------------|-------------|
+| Code architecture | code-architect |
+| Layout calculations | ui-ux-developer |
+| Game rules/mechanics | game-designer |
+| Touch/input handling | input-developer |
+| MCP tool selection | mcp-advisor |
+
+**Do NOT Use When:**
+- Task is code architecture (use code-architect)
+- Task is layout/sizing calculations (use ui-ux-developer)
+- Task is game rules (use game-designer)
+
 **Integration:**
 
 Coordinate with:

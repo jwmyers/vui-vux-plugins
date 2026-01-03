@@ -184,6 +184,32 @@ Each tile has 4 edge nodes at side midpoints:
 | Bottom | (0, -1.0)               |
 | Left   | (-1.0, 0)               |
 
+### Token Snapping
+
+- `NodeSnapDistance = 0.5` world units (appropriate for TokenSize = 0.4)
+- Tokens snap to the nearest edge node within snap distance
+
+### EdgeNode and Tile Rotation
+
+EdgeNode values (`Top`, `Right`, `Bottom`, `Left`) are **tile-local coordinates** that rotate with the tile:
+
+```csharp
+// Rotate edge node by rotation steps (each step = 90 degrees clockwise)
+public static EdgeNode RotateEdge(EdgeNode node, int rotationSteps)
+{
+    return (EdgeNode)(((int)node + rotationSteps) % 4);
+}
+
+// Example: A path from Left to Top on an unrotated tile
+// After 1 rotation step (90 CW): becomes Bottom to Right
+```
+
+**Center Tile Special Case:**
+
+- Center tile (game-tile-13) is the ONLY tile that cannot rotate
+- Blue Attack starts on Left node, Red Attack starts on Right node
+- These starting positions are fixed and hardcoded per game rules
+
 ## Coordinate System Summary
 
 ```text

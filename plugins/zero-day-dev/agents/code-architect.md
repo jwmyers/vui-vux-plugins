@@ -205,6 +205,21 @@ For code review:
 2. [Specific improvement]
 ```
 
+## Related Agents
+
+| For This Work | Use Instead |
+|---------------|-------------|
+| Game rules/mechanics | game-designer |
+| Touch/input handling | input-developer |
+| Visual layout/sizing | ui-ux-developer |
+| Unity scene hierarchy | scene-builder |
+| MCP tool selection | mcp-advisor |
+
+**Do NOT Use When:**
+- Task is purely visual layout (use ui-ux-developer)
+- Task is about game rules (use game-designer)
+- Task is Board SDK input handling (use input-developer)
+
 ## Integration
 
 Coordinate with:

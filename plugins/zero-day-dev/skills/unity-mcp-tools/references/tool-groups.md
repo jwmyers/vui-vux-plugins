@@ -13,37 +13,90 @@ Complete group definitions for `/unity-mcp-enable`.
 ### scene-write
 
 ```json
-["scene-create", "scene-save", "scene-open", "scene-set-active", "scene-unload", "console-get-logs"]
+[
+  "scene-create",
+  "scene-save",
+  "scene-open",
+  "scene-set-active",
+  "scene-unload",
+  "console-get-logs"
+]
 ```
 
 ### gameobject
 
 ```json
-["gameobject-create", "gameobject-find", "gameobject-modify", "gameobject-destroy", "gameobject-duplicate", "gameobject-set-parent", "scene-save", "console-get-logs"]
+[
+  "gameobject-create",
+  "gameobject-find",
+  "gameobject-modify",
+  "gameobject-destroy",
+  "gameobject-duplicate",
+  "gameobject-set-parent",
+  "scene-save",
+  "console-get-logs"
+]
 ```
 
 ### component
 
 ```json
-["gameobject-component-add", "gameobject-component-get", "gameobject-component-modify", "gameobject-component-destroy", "component-list", "scene-save", "console-get-logs"]
+[
+  "gameobject-component-add",
+  "gameobject-component-get",
+  "gameobject-component-modify",
+  "gameobject-component-destroy",
+  "component-list",
+  "scene-save",
+  "console-get-logs"
+]
 ```
 
 ### script
 
 ```json
-["script-read", "script-update-or-create", "script-delete", "script-execute", "assets-refresh", "editor-application-get-state", "console-get-logs"]
+[
+  "script-read",
+  "script-update-or-create",
+  "script-delete",
+  "script-execute",
+  "assets-refresh",
+  "editor-application-get-state",
+  "console-get-logs"
+]
 ```
 
 ### prefab
 
 ```json
-["assets-prefab-create", "assets-prefab-instantiate", "assets-prefab-open", "assets-prefab-save", "assets-prefab-close", "assets-refresh", "editor-application-get-state", "console-get-logs"]
+[
+  "assets-prefab-create",
+  "assets-prefab-instantiate",
+  "assets-prefab-open",
+  "assets-prefab-save",
+  "assets-prefab-close",
+  "assets-refresh",
+  "editor-application-get-state",
+  "console-get-logs"
+]
 ```
 
 ### assets
 
 ```json
-["assets-find", "assets-create-folder", "assets-copy", "assets-move", "assets-delete", "assets-get-data", "assets-modify", "assets-refresh", "assets-material-create", "assets-shader-list-all", "console-get-logs"]
+[
+  "assets-find",
+  "assets-create-folder",
+  "assets-copy",
+  "assets-move",
+  "assets-delete",
+  "assets-get-data",
+  "assets-modify",
+  "assets-refresh",
+  "assets-material-create",
+  "assets-shader-list-all",
+  "console-get-logs"
+]
 ```
 
 ### testing
@@ -55,13 +108,25 @@ Complete group definitions for `/unity-mcp-enable`.
 ### editor
 
 ```json
-["editor-application-get-state", "editor-application-set-state", "console-get-logs", "editor-selection-get", "editor-selection-set"]
+[
+  "editor-application-get-state",
+  "editor-application-set-state",
+  "console-get-logs",
+  "editor-selection-get",
+  "editor-selection-set"
+]
 ```
 
 ### packages
 
 ```json
-["package-list", "package-add", "package-remove", "package-search", "console-get-logs"]
+[
+  "package-list",
+  "package-add",
+  "package-remove",
+  "package-search",
+  "console-get-logs"
+]
 ```
 
 ### reflection

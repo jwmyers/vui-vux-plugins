@@ -135,6 +135,21 @@ When MCP isn't working, check:
 4. Are required tools enabled? (`/unity-mcp-status`)
 5. Is Editor in Edit mode (not Play mode)?
 
+## Related Agents
+
+| For This Work | Use Instead |
+|---------------|-------------|
+| Scene hierarchy changes | scene-builder |
+| Layout/visual work | ui-ux-developer |
+| Running tests | test-engineer |
+| Code changes | code-architect |
+| Touch/input | input-developer |
+
+**Do NOT Use When:**
+- You need to execute MCP operations (use scene-builder, ui-ux-developer, etc.)
+- Task is code-only with no Unity Editor needs (use code-architect)
+- MCP is working and you just need to use it (spawn appropriate agent)
+
 ## Integration
 
 This agent works with the main Claude orchestrator to:

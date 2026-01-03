@@ -36,6 +36,8 @@ Board is a specialized multi-touch display with:
 | `Ended`      | Lifted from surface             |
 | `Canceled`   | Tracking interrupted            |
 
+**IMPORTANT:** Handle `Stationary` in addition to `Began`/`Moved`/`Ended`. A glyph placed directly without movement triggers `Began` then `Stationary` (not `Moved`). This is critical for piece placement detection.
+
 ### Pieces and Glyphs
 
 - **Piece**: Physical object with conductive glyph on base (no electronics)
@@ -198,6 +200,30 @@ Test without hardware using Board's Simulator:
 - Mouse clicks = finger touches
 - Keyboard shortcuts for piece placement
 - Virtual glyph positioning
+
+### Simulator Icon Setup (Required for Glyph Testing)
+
+To test glyph/piece detection in the simulator:
+
+1. **Create Simulation Icons**: For each piece type, create a `BoardContactSimulationIcon` ScriptableObject
+   - Right-click in Project > Create > Board > Contact Simulation Icon
+   - Set the GlyphId to match the token's GlyphId in TokenDatabase
+
+2. **Configure Palette**: Add icons to the simulator palette
+   - Open Board > Input > Simulator
+   - Add each simulation icon to the available palette
+
+3. **GlyphId Mapping**: Ensure TokenDatabase GlyphIds match simulation icon GlyphIds
+
+```text
+Token in TokenDatabase    Simulation Icon GlyphId
+─────────────────────     ─────────────────────────
+Red Attack (GlyphId: 1)   → SimIcon_RedAttack (1)
+Red Exploit (GlyphId: 2)  → SimIcon_RedExploit (2)
+...
+```
+
+**Troubleshooting**: If glyphs are not detected, verify GlyphId values match between TokenDatabase entries and simulation icons.
 
 ## Coordinate Conversion
 

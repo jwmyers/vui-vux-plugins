@@ -12,21 +12,15 @@ Start the Unity MCP server using the project's startup script. The server must b
 
 1. Check if server is already running (port 56688)
 
-2. Start the MCP server:
+2. Start the MCP server inside the zero-day-attack root folder:
 
    ```bash
-   start-mcp-server.bat
+   run start-mcp-server.bat
    ```
 
-3. Confirm server is running
+3. Check to see if the server is running
 
-## User Startup Order (Critical)
-
-```text
-1. Run start-mcp-server.bat    ← This command
-2. Open Unity Editor           ← Plugin auto-connects
-3. Run /mcp to verify          ← Check connection
-```
+4. If confirmed, notify user. If not, enter troubleshooting with the `mcp-advisor` agent
 
 ## Architecture
 

@@ -104,6 +104,6 @@ For path `GameplayScene/TileManager`:
 
 ## Notes
 
-- If no path provided, list available MCP resources
+- If no path provided, ask for a game object to search for
 - The MCP Resource must be enabled in AI-Game-Developer-Config.json (should always be true)
 - Works even when all MCP tools are disabled

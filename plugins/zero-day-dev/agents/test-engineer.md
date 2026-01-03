@@ -246,6 +246,20 @@ New test design:
 [Test code]
 ```
 
+## Related Agents
+
+| For This Work | Use Instead |
+|---------------|-------------|
+| Code architecture | code-architect |
+| Game rules/mechanics | game-designer |
+| Scene hierarchy | scene-builder |
+| MCP tool selection | mcp-advisor |
+
+**Do NOT Use When:**
+- Task is code architecture (use code-architect)
+- Task is game rules (use game-designer)
+- Task is scene modifications (use scene-builder)
+
 ## Integration
 
 Coordinate with:

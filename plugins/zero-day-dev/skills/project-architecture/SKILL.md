@@ -23,6 +23,16 @@ The codebase organizes into distinct layers:
 | **Input**  | `Input/`              | Board SDK abstraction                        |
 | **Config** | `Config/`             | Static layout constants                      |
 
+**CRITICAL - State Ownership:**
+
+| Component      | Owns                              | Does NOT Own                  |
+| -------------- | --------------------------------- | ----------------------------- |
+| `GameState`    | Token positions, game phase, turn | Visual representations        |
+| `TokenManager` | TokenView instances, visuals      | Token positions in game state |
+| `GameManager`  | Game rules, state transitions     | View updates                  |
+
+**Anti-pattern:** View layer (TokenManager) directly updating GameState or making game logic decisions. Always route state changes through GameManager.
+
 ### 2. Board SDK Isolation
 
 Only `InputManager.cs` imports `Board.Input` namespace. This:
@@ -172,6 +182,26 @@ GameState  TileManager
 BoardState (spawn tiles)
 TokenState
 ```
+
+### Event-Driven State Updates
+
+GameManager should expose events for state transitions:
+
+```csharp
+// GameManager events
+public event Action OnSetupComplete;
+public event Action<TokenState> OnTokenPlaced;
+public event Action<TokenState> OnTokenMoved;
+public event Action<Player> OnTurnChanged;
+```
+
+**Flow Example (Token Placement):**
+
+1. `InputManager` detects glyph, fires `OnContactBegan`
+2. `TokenManager` receives event, calls `GameManager.PlaceToken()`
+3. `GameManager` validates placement, updates `GameState`
+4. `GameManager` fires `OnTokenPlaced` event
+5. `TokenManager` (subscribed) updates visual position
 
 ## Scene Hierarchy
 

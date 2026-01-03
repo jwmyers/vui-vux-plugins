@@ -108,6 +108,24 @@ When documenting:
 - [reference]: [status]
 ```
 
+## Related Agents
+
+| For This Work | Use Instead |
+|---------------|-------------|
+| Code architecture | code-architect |
+| Game rules/mechanics | game-designer |
+| Layout/visual | ui-ux-developer |
+| Touch/input | input-developer |
+| Scene hierarchy | scene-builder |
+| Tests | test-engineer |
+| Deployment | deployment-specialist |
+| MCP tool selection | mcp-advisor |
+
+**Do NOT Use When:**
+- Task is code implementation (use code-architect)
+- Task is game rules design (use game-designer)
+- Task is specific implementation work (use domain agent)
+
 ## Coordination Guidelines
 
 - Defer to specialized agents for domain expertise

@@ -169,6 +169,21 @@ When implementing feedback:
 [How to confirm it's correct]
 ```
 
+## Related Agents
+
+| For This Work | Use Instead |
+|---------------|-------------|
+| Code architecture | code-architect |
+| Game rules/mechanics | game-designer |
+| Touch/input handling | input-developer |
+| Scene hierarchy changes | scene-builder |
+| MCP tool selection | mcp-advisor |
+
+**Do NOT Use When:**
+- Task is code architecture (use code-architect)
+- Task is game rules/mechanics (use game-designer)
+- Task is Board SDK input (use input-developer)
+
 ## Integration
 
 Coordinate with:

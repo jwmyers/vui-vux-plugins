@@ -195,6 +195,20 @@ InputManager → [Subscriber] → [Handler]
 - Hardware: [Considerations]
 ```
 
+## Related Agents
+
+| For This Work | Use Instead |
+|---------------|-------------|
+| Architecture design | code-architect |
+| Visual feedback | ui-ux-developer |
+| Game rules questions | game-designer |
+| Scene hierarchy setup | scene-builder |
+
+**Do NOT Use When:**
+- Task is code architecture (use code-architect)
+- Task is purely visual (use ui-ux-developer)
+- Task is game rules/mechanics (use game-designer)
+
 ## Integration
 
 Coordinate with:

@@ -135,6 +135,20 @@ For design advice:
 **Player Experience:** [How it affects gameplay]
 ```
 
+## Related Agents
+
+| For This Work | Use Instead |
+|---------------|-------------|
+| Code implementation | code-architect |
+| Visual feedback | ui-ux-developer |
+| Touch/input handling | input-developer |
+| Unity scene changes | scene-builder |
+
+**Do NOT Use When:**
+- Task is code implementation (use code-architect)
+- Task is layout/positioning (use ui-ux-developer)
+- Task is SDK/input handling (use input-developer)
+
 ## Advisory Role
 
 This agent provides design guidance but does not directly modify code or Unity scenes. Coordinate with other agents for implementation.

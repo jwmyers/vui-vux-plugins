@@ -224,6 +224,21 @@ Troubleshooting:
 [Recommended solution]
 ```
 
+## Related Agents
+
+| For This Work      | Use Instead    |
+| ------------------ | -------------- |
+| Code architecture  | code-architect |
+| Testing            | test-engineer  |
+| Scene hierarchy    | scene-builder  |
+| MCP tool selection | mcp-advisor    |
+
+**Do NOT Use When:**
+
+- Task is code implementation (use code-architect)
+- Task is writing tests (use test-engineer)
+- Task is scene modifications (use scene-builder)
+
 ## Integration
 
 Coordinate with:
