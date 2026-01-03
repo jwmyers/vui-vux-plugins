@@ -1,7 +1,7 @@
 ---
-name: Unity Testing
+name: unity-testing
 description: This skill should be used when the user asks about "tests", "unit tests", "EditMode tests", "PlayMode tests", "Test Runner", "test coverage", "NUnit", "Assert", "test fixtures", "writing tests", "running tests", or discusses Unity testing patterns and practices.
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Unity Testing
@@ -14,27 +14,27 @@ Expert knowledge of Unity testing patterns, EditMode/PlayMode tests, and test-dr
 
 Run without entering Play mode - fast iteration:
 
-| Property | Value |
-|----------|-------|
-| Location | `Assets/Tests/Editor/` |
-| Assembly | `*.Tests.Editor.asmdef` |
-| Speed | Fast (no scene loading) |
-| Use For | Pure logic, data validation, calculations |
+| Property | Value                                     |
+| -------- | ----------------------------------------- |
+| Location | `Assets/Tests/Editor/`                    |
+| Assembly | `*.Tests.Editor.asmdef`                   |
+| Speed    | Fast (no scene loading)                   |
+| Use For  | Pure logic, data validation, calculations |
 
 ### PlayMode Tests
 
 Run in simulated Play mode - test runtime behavior:
 
-| Property | Value |
-|----------|-------|
-| Location | `Assets/Tests/Runtime/` |
-| Assembly | `*.Tests.Runtime.asmdef` |
-| Speed | Slower (scene setup required) |
-| Use For | MonoBehaviour, scene interactions, integration |
+| Property | Value                                          |
+| -------- | ---------------------------------------------- |
+| Location | `Assets/Tests/Runtime/`                        |
+| Assembly | `*.Tests.Runtime.asmdef`                       |
+| Speed    | Slower (scene setup required)                  |
+| Use For  | MonoBehaviour, scene interactions, integration |
 
 ## Project Test Structure
 
-```
+```text
 Assets/Tests/
 ├── Editor/
 │   ├── BoardLayoutConfigTests.cs    # LayoutConfig validation
@@ -46,7 +46,7 @@ Assets/Tests/
 
 ## Writing EditMode Tests
 
-### Basic Structure
+### EditMode Test Basic Structure
 
 ```csharp
 using NUnit.Framework;
@@ -128,7 +128,7 @@ namespace ZeroDayAttack.Tests.Editor
 
 ## Writing PlayMode Tests
 
-### Basic Structure
+### PlayMode Test Basic Structure
 
 ```csharp
 using System.Collections;
@@ -272,10 +272,10 @@ Assert.DoesNotThrow(() => {
 ```json
 {
   "testMode": "EditMode",
-  "includePassingTests": false,    // Only show failures
-  "includeMessages": true,         // Include assertion messages
-  "includeStacktrace": true,       // Include stack traces
-  "includeLogs": true              // Include console logs
+  "includePassingTests": false, // Only show failures
+  "includeMessages": true, // Include assertion messages
+  "includeStacktrace": true, // Include stack traces
+  "includeLogs": true // Include console logs
 }
 ```
 
@@ -312,6 +312,7 @@ public void SceneSetup_Test() { }
 ```
 
 Run by category:
+
 ```json
 {
   "testMode": "EditMode",
@@ -358,6 +359,7 @@ public void Tile_HasCorrectDimensions()
 ### Test Independence
 
 Each test should be independent:
+
 - Use `[SetUp]` for common initialization
 - Use `[TearDown]` for cleanup
 - Don't rely on test execution order
@@ -365,6 +367,7 @@ Each test should be independent:
 ### Fast Tests
 
 Prefer EditMode tests when possible:
+
 - No scene loading overhead
 - Pure logic tests run instantly
 - Use PlayMode only when necessary
@@ -374,6 +377,7 @@ Prefer EditMode tests when possible:
 ### BoardLayoutConfigTests
 
 Tests `LayoutConfig` constants:
+
 - Grid dimensions
 - Screen dimensions
 - Camera settings
@@ -382,6 +386,7 @@ Tests `LayoutConfig` constants:
 ### TileDatabaseTests
 
 Tests `TileDatabase` integrity:
+
 - Database loads from Resources
 - Correct tile count (25)
 - All tiles have sprites
@@ -390,6 +395,7 @@ Tests `TileDatabase` integrity:
 ### CoordinateConversionTests
 
 Tests `TileManager` coordinate conversion:
+
 - Grid-to-world mapping
 - Center tile at origin
 - Corner positions correct
@@ -397,6 +403,7 @@ Tests `TileManager` coordinate conversion:
 ### GameInitializationTests
 
 Tests game startup:
+
 - Managers initialize correctly
 - Scene hierarchy valid
 - Initial state correct
@@ -406,11 +413,13 @@ Tests game startup:
 ### Reference Files
 
 For test examples:
+
 - **Assets/Tests/Editor/** - EditMode test examples
 - **Assets/Tests/Runtime/** - PlayMode test examples
 
 ### Running Tests in Unity
 
 Window > General > Test Runner
+
 - EditMode tab for editor tests
 - PlayMode tab for runtime tests

@@ -1,7 +1,7 @@
 ---
-name: Board Layout and Sizing
+name: layout-sizing
 description: This skill should be used when the user asks about "layout", "sizing", "coordinates", "1920x1080", "world units", "PPU", "pixels per unit", "SVG import", "texture size", "grid positioning", "screen dimensions", "camera", "orthographic size", "reserve zones", "LayoutConfig", or discusses Board display layout and sprite sizing.
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Board Layout and Sizing
@@ -13,46 +13,46 @@ Expert knowledge of Board display layout, coordinate systems, SVG import setting
 ### Target Display
 
 | Metric | Pixels | World Units (100 PPU) |
-|--------|--------|----------------------|
-| Width | 1920 | 19.2 |
-| Height | 1080 | 10.8 |
+| ------ | ------ | --------------------- |
+| Width  | 1920   | 19.2                  |
+| Height | 1080   | 10.8                  |
 
 ### Camera Settings
 
-| Setting | Value |
-|---------|-------|
-| Orthographic Size | **5.4** |
-| Position | (0, 0, -10) |
-| Aspect Ratio | 16:9 |
+| Setting           | Value       |
+| ----------------- | ----------- |
+| Orthographic Size | **5.4**     |
+| Position          | (0, 0, -10) |
+| Aspect Ratio      | 16:9        |
 
 **Calculation**: `Visible Height = orthoSize × 2 = 10.8 world units`
 
 ## Horizontal Layout (19.2 world units)
 
-```
+```text
 |  Blue UI  | Blue Res | Buffer |   5×5 Grid   | Buffer | Red Res |  Red UI  |
 |    2.1    |   2.0    |  0.5   |     10.0     |  0.5   |   2.0   |   2.1    |
 ```
 
 ### Zone Coordinates
 
-| Zone | Left | Right | Center | Width |
-|------|------|-------|--------|-------|
-| Blue UI | -9.6 | -7.5 | -8.55 | 2.1 |
-| Blue Reserve | -7.5 | -5.5 | -6.5 | 2.0 |
-| Left Buffer | -5.5 | -5.0 | — | 0.5 |
+| Zone              | Left     | Right    | Center  | Width    |
+| ----------------- | -------- | -------- | ------- | -------- |
+| Blue UI           | -9.6     | -7.5     | -8.55   | 2.1      |
+| Blue Reserve      | -7.5     | -5.5     | -6.5    | 2.0      |
+| Left Buffer       | -5.5     | -5.0     | —       | 0.5      |
 | **Playable Grid** | **-5.0** | **+5.0** | **0.0** | **10.0** |
-| Right Buffer | +5.0 | +5.5 | — | 0.5 |
-| Red Reserve | +5.5 | +7.5 | +6.5 | 2.0 |
-| Red UI | +7.5 | +9.6 | +8.55 | 2.1 |
+| Right Buffer      | +5.0     | +5.5     | —       | 0.5      |
+| Red Reserve       | +5.5     | +7.5     | +6.5    | 2.0      |
+| Red UI            | +7.5     | +9.6     | +8.55   | 2.1      |
 
 ## Vertical Layout (10.8 world units)
 
-| Zone | Bottom | Top | Height |
-|------|--------|-----|--------|
-| Bottom Margin | -5.4 | -5.0 | 0.4 |
-| Playable Grid | -5.0 | +5.0 | 10.0 |
-| Top Margin | +5.0 | +5.4 | 0.4 |
+| Zone          | Bottom | Top  | Height |
+| ------------- | ------ | ---- | ------ |
+| Bottom Margin | -5.4   | -5.0 | 0.4    |
+| Playable Grid | -5.0   | +5.0 | 10.0   |
+| Top Margin    | +5.0   | +5.4 | 0.4    |
 
 ## LayoutConfig Reference
 
@@ -96,24 +96,24 @@ float y = LayoutConfig.GridBottom + (gridY * LayoutConfig.TileSize) + (LayoutCon
 
 ### Key Grid Positions
 
-| Grid | World Center | Description |
-|------|--------------|-------------|
-| (0, 0) | (-4, -4) | Bottom-left |
-| (2, 2) | (0, 0) | Center (starting tile) |
-| (4, 4) | (4, 4) | Top-right |
-| (0, 4) | (-4, 4) | Top-left |
-| (4, 0) | (4, -4) | Bottom-right |
+| Grid   | World Center | Description            |
+| ------ | ------------ | ---------------------- |
+| (0, 0) | (-4, -4)     | Bottom-left            |
+| (2, 2) | (0, 0)       | Center (starting tile) |
+| (4, 4) | (4, 4)       | Top-right              |
+| (0, 4) | (-4, 4)      | Top-left               |
+| (4, 0) | (4, -4)      | Bottom-right           |
 
 ## SVG Import Settings
 
 ### THE GOLDEN RULE
 
-```
+```text
 ╔═══════════════════════════════════════════════════════════════╗
 ║                                                               ║
-║   WORLD SIZE = TEXTURE SIZE ÷ PIXELS PER UNIT                ║
+║   WORLD SIZE = TEXTURE SIZE ÷ PIXELS PER UNIT                 ║
 ║                                                               ║
-║   ALWAYS use PPU = 100. Adjust Texture Size for world size.  ║
+║   ALWAYS use PPU = 100. Adjust Texture Size for world size.   ║
 ║                                                               ║
 ╚═══════════════════════════════════════════════════════════════╝
 ```
@@ -122,10 +122,10 @@ float y = LayoutConfig.GridBottom + (gridY * LayoutConfig.TileSize) + (LayoutCon
 
 ### Standard Settings
 
-| Asset | Desired World Size | Texture Size | PPU |
-|-------|-------------------|--------------|-----|
-| **Tiles** | 2.0 | **200** | 100 |
-| **Tokens** | 0.4 (20% of tile) | **40** | 100 |
+| Asset      | Desired World Size | Texture Size | PPU |
+| ---------- | ------------------ | ------------ | --- |
+| **Tiles**  | 2.0                | **200**      | 100 |
+| **Tokens** | 0.4 (20% of tile)  | **40**       | 100 |
 
 ### Import Steps
 
@@ -138,24 +138,24 @@ float y = LayoutConfig.GridBottom + (gridY * LayoutConfig.TileSize) + (LayoutCon
 
 ### Common Mistakes
 
-| Mistake | Consequence | Solution |
-|---------|-------------|----------|
-| Changing PPU | Inconsistent sizing | Always PPU = 100 |
-| Default Texture Size (256) | Wrong world size | Calculate: WorldSize × 100 |
-| Matching viewBox | Irrelevant to sizing | Set based on desired world size |
+| Mistake                    | Consequence          | Solution                        |
+| -------------------------- | -------------------- | ------------------------------- |
+| Changing PPU               | Inconsistent sizing  | Always PPU = 100                |
+| Default Texture Size (256) | Wrong world size     | Calculate: WorldSize × 100      |
+| Matching viewBox           | Irrelevant to sizing | Set based on desired world size |
 
 ## Rendering Order
 
 Higher sorting order = renders in front.
 
-| Layer | Sorting Order | Content |
-|-------|---------------|---------|
-| Background | -10 | Solid color (#0D0F14) |
-| Tiles | 0 | TileView sprites |
-| Grid Glow | 1 | Wide semi-transparent lines |
-| Grid Core | 2 | Thin bright lines |
-| Reserve Lines | 1 | Zone boundaries |
-| Tokens | 10 | TokenView sprites |
+| Layer         | Sorting Order | Content                     |
+| ------------- | ------------- | --------------------------- |
+| Background    | -10           | Solid color (#0D0F14)       |
+| Tiles         | 0             | TileView sprites            |
+| Grid Glow     | 1             | Wide semi-transparent lines |
+| Grid Core     | 2             | Thin bright lines           |
+| Reserve Lines | 1             | Zone boundaries             |
+| Tokens        | 10            | TokenView sprites           |
 
 ### Grid Visibility
 
@@ -164,10 +164,12 @@ Grid MUST have higher sorting order than tiles (1-2 vs 0) to appear above them.
 ## Player Orientation
 
 Players sit facing each other:
+
 - **Blue player**: Views from LEFT side (x < 0)
 - **Red player**: Views from RIGHT side (x > 0)
 
 UI text rotation:
+
 - Blue UI: Normal rotation (readable from left)
 - Red UI: Rotated 180° (readable from right)
 
@@ -175,16 +177,16 @@ UI text rotation:
 
 Each tile has 4 edge nodes at side midpoints:
 
-| Node | Offset from Tile Center |
-|------|------------------------|
-| Top | (0, +1.0) |
-| Right | (+1.0, 0) |
-| Bottom | (0, -1.0) |
-| Left | (-1.0, 0) |
+| Node   | Offset from Tile Center |
+| ------ | ----------------------- |
+| Top    | (0, +1.0)               |
+| Right  | (+1.0, 0)               |
+| Bottom | (0, -1.0)               |
+| Left   | (-1.0, 0)               |
 
 ## Coordinate System Summary
 
-```
+```text
                     World Y
                        ↑
                        |  +5.4 (screen top)
@@ -208,6 +210,7 @@ Each tile has 4 edge nodes at side midpoints:
 
 **Cause**: Wrong SVG Texture Size
 **Solution**: `Texture Size = World Size × 100`
+
 - Tiles: 200 (2.0 × 100)
 - Tokens: 40 (0.4 × 100)
 
@@ -226,13 +229,14 @@ Each tile has 4 edge nodes at side midpoints:
 ### Reference Files
 
 For complete sizing documentation:
+
 - **Documentation/BOARD-TILE-SIZING-ANALYSIS.md** - Comprehensive layout guide
 - **Documentation/game-visual-style-guide.md** - Colors and styling
 - **Assets/Scripts/Config/LayoutConfig.cs** - All constants
 
 ### Quick Reference
 
-```
+```text
 PPU = 100 (ALWAYS)
 Texture Size = World Size × 100
 

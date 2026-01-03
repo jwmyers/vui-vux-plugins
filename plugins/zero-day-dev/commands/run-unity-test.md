@@ -1,9 +1,7 @@
 ---
-name: test
+name: run-unity-test
 description: Run Unity tests via MCP
-allowed-tools:
-  - mcp__ai-game-developer__tests-run
-  - Read
+allowed-tools: "*"
 argument-hint: "[EditMode|PlayMode] [test-class]"
 ---
 
@@ -14,10 +12,12 @@ Execute Unity tests using the Unity MCP tests-run tool.
 ## Process
 
 1. Parse arguments:
+
    - First arg: Test mode (EditMode or PlayMode, default: EditMode)
    - Second arg: Optional test class name filter
 
 2. Run tests via MCP:
+
    ```json
    {
      "testMode": "[EditMode|PlayMode]",
@@ -34,11 +34,13 @@ Execute Unity tests using the Unity MCP tests-run tool.
 ## Test Modes
 
 **EditMode** (default):
+
 - Runs without Play mode
 - Fast execution
 - Tests pure logic and data
 
 **PlayMode**:
+
 - Runs in simulated Play mode
 - Tests runtime behavior
 - Requires scene setup
@@ -46,28 +48,31 @@ Execute Unity tests using the Unity MCP tests-run tool.
 ## Examples
 
 Run all EditMode tests:
-```
+
+```text
 /test
 ```
 
 Run all PlayMode tests:
-```
+
+```text
 /test PlayMode
 ```
 
 Run specific test class:
-```
+
+```text
 /test EditMode LayoutConfigTests
 ```
 
 ## Existing Tests
 
-| Test File | Mode | Tests |
-|-----------|------|-------|
-| BoardLayoutConfigTests | Editor | LayoutConfig values |
-| TileDatabaseTests | Editor | Database integrity |
+| Test File                 | Mode    | Tests                 |
+| ------------------------- | ------- | --------------------- |
+| BoardLayoutConfigTests    | Editor  | LayoutConfig values   |
+| TileDatabaseTests         | Editor  | Database integrity    |
 | CoordinateConversionTests | Runtime | Coordinate conversion |
-| GameInitializationTests | Runtime | Game startup |
+| GameInitializationTests   | Runtime | Game startup          |
 
 ## Notes
 

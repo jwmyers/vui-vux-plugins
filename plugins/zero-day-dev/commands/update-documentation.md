@@ -1,12 +1,7 @@
 ---
-name: document
+name: update-documentation
 description: Update project documentation based on recent changes
-allowed-tools:
-  - Read
-  - Write
-  - Edit
-  - Grep
-  - Glob
+allowed-tools: "*"
 ---
 
 # Update Documentation
@@ -16,10 +11,12 @@ Update project documentation to reflect recent changes. This command coordinates
 ## Process
 
 1. **Analyze Recent Changes**
+
    - Review what was modified
    - Identify affected documentation
 
 2. **Update CLAUDE.md** (if architecture/build changed)
+
    - Script organization
    - Namespaces
    - Singleton managers
@@ -27,18 +24,21 @@ Update project documentation to reflect recent changes. This command coordinates
    - Configuration
 
 3. **Update README.md** (if user-facing changed)
+
    - Feature descriptions
    - Setup instructions
    - Usage examples
 
 4. **Update Documentation/** (if systems changed)
+
    - ARCHITECTURE-ANALYSIS.md
    - DIGITIZATION-ANALYSIS.md
    - Other technical docs
 
 5. **Update Plugin Components** (if domain knowledge changed)
-   - Skills (skills/*/SKILL.md)
-   - Agents (agents/*.md)
+
+   - Skills (skills/\*/SKILL.md)
+   - Agents (agents/\*.md)
 
 6. **Verify Cross-References**
    - Check links between files
@@ -46,28 +46,31 @@ Update project documentation to reflect recent changes. This command coordinates
 
 ## Documentation Files
 
-| File | Update When |
-|------|-------------|
-| `CLAUDE.md` | Architecture, build, configuration changes |
-| `README.md` | User-facing features change |
-| `Documentation/ARCHITECTURE-ANALYSIS.md` | Code architecture changes |
-| `Documentation/DIGITIZATION-ANALYSIS.md` | Implementation changes |
-| `Documentation/RULES-ANALYSIS.md` | Game mechanics clarified |
+| File                                     | Update When                                |
+| ---------------------------------------- | ------------------------------------------ |
+| `CLAUDE.md`                              | Architecture, build, configuration changes |
+| `README.md`                              | User-facing features change                |
+| `Documentation/ARCHITECTURE-ANALYSIS.md` | Code architecture changes                  |
+| `Documentation/DIGITIZATION-ANALYSIS.md` | Implementation changes                     |
+| `Documentation/RULES-ANALYSIS.md`        | Game mechanics clarified                   |
 
 ## Update Guidelines
 
 **CLAUDE.md:**
+
 - Keep concise - detail goes in Documentation/
 - Focus on actionable information for AI
 - Use tables for structured data
 - Include code examples
 
 **README.md:**
+
 - User-friendly language
 - Working commands
 - Clear setup instructions
 
 **Documentation/:**
+
 - Comprehensive technical detail
 - Code examples
 - Architecture diagrams
@@ -75,7 +78,8 @@ Update project documentation to reflect recent changes. This command coordinates
 ## Output
 
 Provide summary of updates:
-```
+
+```text
 ## Documentation Update Summary
 
 ### Files Updated

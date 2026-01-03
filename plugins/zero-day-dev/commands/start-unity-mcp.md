@@ -1,9 +1,7 @@
 ---
 name: start-unity-mcp
 description: Start the Unity MCP server before opening Unity
-allowed-tools:
-  - Bash
-  - Read
+allowed-tools: "*"
 ---
 
 # Start Unity MCP Server
@@ -15,20 +13,16 @@ Start the Unity MCP server using the project's startup script. The server must b
 1. Check if server is already running (port 56688)
 
 2. Start the MCP server:
+
    ```bash
    start-mcp-server.bat
    ```
 
 3. Confirm server is running
 
-4. Provide next steps:
-   - Open Unity Editor
-   - Plugin auto-connects to server
-   - Run `/mcp` in Claude Code to verify
+## User Startup Order (Critical)
 
-## Startup Order (Critical)
-
-```
+```text
 1. Run start-mcp-server.bat    ← This command
 2. Open Unity Editor           ← Plugin auto-connects
 3. Run /mcp to verify          ← Check connection
@@ -36,21 +30,21 @@ Start the Unity MCP server using the project's startup script. The server must b
 
 ## Architecture
 
-```
+```text
 ┌─────────────┐                 ┌──────────────────┐              ┌──────────────┐
-│ Claude #1   │ ───HTTP───────▶ │                  │              │              │
-├─────────────┤                 │ MCP Server :56688│ ◀──SignalR──▶│ Unity Plugin │
-│ Claude #2   │ ───HTTP───────▶ │                  │              │              │
+│ Claude #1   │ ───HTTP───────> │                  │              │              │
+├─────────────┤                 │ MCP Server :56688│ <──SignalR──>│ Unity Plugin │
+│ Claude #2   │ ───HTTP───────> │                  │              │              │
 └─────────────┘                 └──────────────────┘              └──────────────┘
 ```
 
 ## Configuration Files
 
-| File | Purpose |
-|------|---------|
-| `.mcp.json` | Claude Code MCP configuration |
-| `start-mcp-server.bat` | Server startup script |
-| `Assets/Resources/AI-Game-Developer-Config.json` | Unity plugin settings |
+| File                                             | Purpose                       |
+| ------------------------------------------------ | ----------------------------- |
+| `.mcp.json`                                      | Claude Code MCP configuration |
+| `start-mcp-server.bat`                           | Server startup script         |
+| `Assets/Resources/AI-Game-Developer-Config.json` | Unity plugin settings         |
 
 ## Notes
 

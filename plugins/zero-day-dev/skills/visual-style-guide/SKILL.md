@@ -1,7 +1,7 @@
 ---
-name: Visual Style Guide
+name: visual-style-guide
 description: This skill should be used when the user asks about "colors", "hex codes", "path colors", "tile background", "rendering order", "sorting order", "token design", "SVG styling", "stroke width", "line cap", "grid lines", "glow effect", "visual style", or discusses Zero-Day Attack visual design and styling.
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Visual Style Guide
@@ -12,23 +12,24 @@ Expert knowledge of Zero-Day Attack visual design, color palette, rendering spec
 
 ### Background Elements
 
-| Element | Hex | RGB | Description |
-|---------|-----|-----|-------------|
-| Tile Background | `#151820` | (21, 24, 32) | Very dark blue-gray |
-| Grid Lines | `#222630` | (34, 38, 48) | Slightly lighter (50% opacity) |
-| Board Background | `#0D0F14` | (13, 15, 20) | Darkest blue-gray |
+| Element          | Hex       | RGB          | Description                    |
+| ---------------- | --------- | ------------ | ------------------------------ |
+| Tile Background  | `#151820` | (21, 24, 32) | Very dark blue-gray            |
+| Grid Lines       | `#222630` | (34, 38, 48) | Slightly lighter (50% opacity) |
+| Board Background | `#0D0F14` | (13, 15, 20) | Darkest blue-gray              |
 
 ### Path Colors
 
-| Color | Hex | RGB | Purpose |
-|-------|-----|-----|---------|
-| Red | `#FF2244` | (255, 34, 68) | Red player paths |
-| Blue | `#44BBFF` | (68, 187, 255) | Blue player paths |
-| Purple | `#BB88FF` | (187, 136, 255) | Shared paths |
+| Color  | Hex       | RGB             | Purpose           |
+| ------ | --------- | --------------- | ----------------- |
+| Red    | `#FF2244` | (255, 34, 68)   | Red player paths  |
+| Blue   | `#44BBFF` | (68, 187, 255)  | Blue player paths |
+| Purple | `#BB88FF` | (187, 136, 255) | Shared paths      |
 
 ### Color Accessibility
 
 Colors tested for color vision deficiencies:
+
 - High contrast between paths and background
 - Red appears brownish but distinct in colorblind view
 - Blue remains clearly visible
@@ -46,12 +47,12 @@ Colors tested for color vision deficiencies:
       stroke-linecap="butt"/>
 ```
 
-| Attribute | Value | Purpose |
-|-----------|-------|---------|
-| fill | none | Paths are stroked, not filled |
-| stroke | (color hex) | Path color |
-| stroke-width | **8** | Path thickness in SVG units |
-| stroke-linecap | **butt** | Square end caps |
+| Attribute      | Value       | Purpose                       |
+| -------------- | ----------- | ----------------------------- |
+| fill           | none        | Paths are stroked, not filled |
+| stroke         | (color hex) | Path color                    |
+| stroke-width   | **8**       | Path thickness in SVG units   |
+| stroke-linecap | **butt**    | Square end caps               |
 
 ### Path Connections
 
@@ -85,7 +86,7 @@ float coreWidth = 0.08f;
 
 ### Attack Token
 
-```
+```text
 Design: Filled target
 - Three concentric circles (solid fill)
 - Cross pattern overlay
@@ -94,7 +95,7 @@ Design: Filled target
 
 ### Exploit Token
 
-```
+```text
 Design: Hollow rings
 - Two concentric circles (outline only)
 - Faint crosshair overlay
@@ -103,7 +104,7 @@ Design: Hollow rings
 
 ### Ghost Token
 
-```
+```text
 Design: Gradient opacity
 - Four concentric circles
 - Graduated opacity: 30%, 50%, 70%, 100%
@@ -112,49 +113,79 @@ Design: Gradient opacity
 
 ### Token Dimensions
 
-| Attribute | Value |
-|-----------|-------|
-| SVG viewBox | 80×80 units |
-| World Size | 0.4 units (20% of tile) |
-| Texture Size | 40 pixels (at 100 PPU) |
+| Attribute    | Value                   |
+| ------------ | ----------------------- |
+| SVG viewBox  | 80×80 units             |
+| World Size   | 0.4 units (20% of tile) |
+| Texture Size | 40 pixels (at 100 PPU)  |
+
+## Tile Dimensions
+
+| Attribute    | Value            |
+| ------------ | ---------------- |
+| SVG viewBox  | 200×200 units    |
+| World Size   | 2.0×2.0 units    |
+| Texture Size | 200 (at 100 PPU) |
+
+### SVG Import Settings (CRITICAL)
+
+**Always use PPU = 100. Adjust Texture Size for world size.**
+
+```text
+World Size = Texture Size ÷ 100
+```
+
+| Asset  | Texture Size | PPU | World Size |
+| ------ | ------------ | --- | ---------- |
+| Tiles  | 200          | 100 | 2.0        |
+| Tokens | 40           | 100 | 0.4        |
 
 ## Rendering Order (Sorting Layers)
 
 Higher sorting order = renders in front.
 
-| Layer | Order | Content | Component |
-|-------|-------|---------|-----------|
-| Background | -10 | Board color | BackgroundRenderer |
-| Tiles | 0 | Tile sprites | TileView |
-| Grid Glow | 1 | Wide purple lines | GridOverlayRenderer |
-| Grid Core | 2 | Thin purple lines | GridOverlayRenderer |
-| Reserve Lines | 1 | Zone boundaries | GridOverlayRenderer |
-| Edge Nodes | 3 | Connection indicators | (future) |
-| UI | Canvas | Text, scores | Unity UI |
+| Layer         | Order  | Content               | Component           |
+| ------------- | ------ | --------------------- | ------------------- |
+| Background    | -10    | Board color           | BackgroundRenderer  |
+| Tiles         | 0      | Tile sprites          | TileView            |
+| Grid Glow     | 1      | Wide purple lines     | GridOverlayRenderer |
+| Grid Core     | 2      | Thin purple lines     | GridOverlayRenderer |
+| Reserve Lines | 1      | Zone boundaries       | GridOverlayRenderer |
+| Edge Nodes    | 3      | Connection indicators | (future)            |
+| UI            | Canvas | Text, scores          | Unity UI            |
 
 ### Critical: Grid Above Tiles
 
 Grid sorting order MUST be higher than tiles:
+
 - Tiles: 0
 - Grid Glow: 1
 - Grid Core: 2
 
 If grid order is lower, tiles cover the grid lines.
 
-## Board Layout Visual
+## Board Layout
 
+### Display Specifications
+
+Target: 1920×1080 pixels = 19.2×10.8 world units (100 PPU)
+
+### Horizontal Layout Visual
+
+```text
+┌────────┬──────────┬────────────────────────────┬──────────┬────────┐
+│Blue UI │ Blue Res │       5×5 PLAYABLE GRID    │ Red Res  │ Red UI │
+│  2.1   │   2.0    │           10.0             │   2.0    │  2.1   │
+│#44BBFF │ #44BBFF  │    #BB88FF (firewall)      │ #FF2244  │#FF2244 │
+└────────┴──────────┴────────────────────────────┴──────────┴────────┘
+← Blue player sits here                      Red player sits here →
 ```
-┌─────────────────────────────────────┐
-│  BLUE (#44BBFF border)              │
-├─────────────────────────────────────┤
-│                                     │
-│      PLAYABLE GRID                  │
-│      (#BB88FF purple borders)       │
-│                                     │
-├─────────────────────────────────────┤
-│  RED (#FF2244 border)               │
-└─────────────────────────────────────┘
-```
+
+### Player Orientation
+
+- **Blue player**: Views from LEFT side (x < 0)
+- **Red player**: Views from RIGHT side (x > 0)
+- UI text rotated appropriately for each player's viewing angle
 
 ## SVG Technical Specifications
 
@@ -179,22 +210,24 @@ If grid order is lower, tiles cover the grid lines.
 
 ### Edge Node Positions (200×200 viewBox)
 
-| Node | Position |
-|------|----------|
-| Top | (100, 0) |
-| Right | (200, 100) |
+| Node   | Position   |
+| ------ | ---------- |
+| Top    | (100, 0)   |
+| Right  | (200, 100) |
 | Bottom | (100, 200) |
-| Left | (0, 100) |
+| Left   | (0, 100)   |
 
 ### Path Types
 
 **Quarter-curve (adjacent nodes)**:
+
 ```svg
 <!-- Left to Top -->
 <path d="M 0 100 C 50 100, 100 50, 100 0" .../>
 ```
 
 **Straight line (opposite nodes)**:
+
 ```svg
 <!-- Left to Right -->
 <path d="M 0 100 L 200 100" .../>
@@ -235,6 +268,7 @@ Enter hex values directly: `#FF2244`, `#44BBFF`, etc.
 ### Reference Files
 
 For complete visual specifications:
+
 - **Documentation/game-visual-style-guide.md** - Full style guide
 - **Documentation/tile-style-guide.svg** - Visual reference with examples
 - **Assets/Tiles/** - Reference existing tile SVGs

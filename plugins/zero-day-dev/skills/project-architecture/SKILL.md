@@ -1,7 +1,7 @@
 ---
-name: Zero-Day Attack Project Architecture
+name: project-architecture
 description: This skill should be used when the user asks about "namespaces", "singleton", "TileManager", "GameManager", "TokenManager", "InputManager", "data flow", "class responsibilities", "layers", "folder structure", "code organization", "design patterns", "ScriptableObject", "databases", or discusses Zero-Day Attack codebase architecture and patterns.
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Zero-Day Attack Project Architecture
@@ -14,18 +14,19 @@ Expert knowledge of the Zero-Day Attack Unity codebase structure, design pattern
 
 The codebase organizes into distinct layers:
 
-| Layer | Location | Purpose |
-|-------|----------|---------|
-| **Data** | `Core/Data/` | Immutable data structures, ScriptableObjects |
-| **State** | `Core/State/` | Mutable runtime game state |
-| **Logic** | `Core/GameManager.cs` | Game rules, orchestration |
-| **View** | `View/` | Visual representation, Unity components |
-| **Input** | `Input/` | Board SDK abstraction |
-| **Config** | `Config/` | Static layout constants |
+| Layer      | Location              | Purpose                                      |
+| ---------- | --------------------- | -------------------------------------------- |
+| **Data**   | `Core/Data/`          | Immutable data structures, ScriptableObjects |
+| **State**  | `Core/State/`         | Mutable runtime game state                   |
+| **Logic**  | `Core/GameManager.cs` | Game rules, orchestration                    |
+| **View**   | `View/`               | Visual representation, Unity components      |
+| **Input**  | `Input/`              | Board SDK abstraction                        |
+| **Config** | `Config/`             | Static layout constants                      |
 
 ### 2. Board SDK Isolation
 
 Only `InputManager.cs` imports `Board.Input` namespace. This:
+
 - Prevents SDK types leaking throughout codebase
 - Enables testing without hardware
 - Centralizes coordinate conversion
@@ -44,25 +45,27 @@ InputManager.Instance  // Board SDK event broadcasting
 ### 4. ScriptableObject Databases
 
 Game data stored in ScriptableObjects:
+
 - `TileDatabase` - 25 tile definitions with sprites and paths
 - `TokenDatabase` - 6 token definitions with sprites and glyph IDs
 
 ## Namespace Organization
 
-| Namespace | Purpose |
-|-----------|---------|
-| `ZeroDayAttack.Config` | Layout constants (`LayoutConfig`) |
-| `ZeroDayAttack.Core` | Game orchestration (`GameManager`) |
-| `ZeroDayAttack.Core.Data` | Data structures, enums, databases |
-| `ZeroDayAttack.Core.State` | Runtime state classes |
-| `ZeroDayAttack.View` | Visual components, managers |
-| `ZeroDayAttack.Input` | Board SDK wrapper |
-| `ZeroDayAttack.Diagnostics` | Debug utilities |
-| `ZeroDayAttack.Editor` | Editor-only tools |
+| Namespace                   | Purpose                            |
+| --------------------------- | ---------------------------------- |
+| `ZeroDayAttack.Config`      | Layout constants (`LayoutConfig`)  |
+| `ZeroDayAttack.Core`        | Game orchestration (`GameManager`) |
+| `ZeroDayAttack.Core.Data`   | Data structures, enums, databases  |
+| `ZeroDayAttack.Core.State`  | Runtime state classes              |
+| `ZeroDayAttack.View`        | Visual components, managers        |
+| `ZeroDayAttack.Input`       | Board SDK wrapper                  |
+| `ZeroDayAttack.Diagnostics` | Debug utilities                    |
+| `ZeroDayAttack.Editor`      | Editor-only tools                  |
 
 ### Namespace Rules
 
 When creating new scripts:
+
 - Place in appropriate namespace based on responsibility
 - Use full namespace declaration: `namespace ZeroDayAttack.View { }`
 - Editor scripts: `ZeroDayAttack.Editor`
@@ -70,7 +73,7 @@ When creating new scripts:
 
 ## Folder Structure
 
-```
+```text
 Assets/Scripts/
 ├── Config/
 │   └── LayoutConfig.cs              # Static layout constants
@@ -113,44 +116,44 @@ Assets/Scripts/
 
 ### Core Layer
 
-| Class | Responsibility |
-|-------|----------------|
+| Class         | Responsibility                                                        |
+| ------------- | --------------------------------------------------------------------- |
 | `GameManager` | Initialize game, manage phases, orchestrate state. No direct visuals. |
-| `GameState` | Hold `BoardState`, `TokenState[]`, current player, phase, actions |
-| `BoardState` | 5×5 grid (`TileData[,]`), reserves, deck, discard |
-| `TokenState` | Token identity, position (tile, node), physical tracking |
+| `GameState`   | Hold `BoardState`, `TokenState[]`, current player, phase, actions     |
+| `BoardState`  | 5×5 grid (`TileData[,]`), reserves, deck, discard                     |
+| `TokenState`  | Token identity, position (tile, node), physical tracking              |
 
 ### Data Layer
 
-| Class | Responsibility |
-|-------|----------------|
-| `TileData` | Define tile: ID, sprite, segments, rotation, grid position |
-| `TokenData` | Define token: ID, sprite, owner, type, glyph ID |
-| `PathSegment` | Connect two `EdgeNode` values with `PathColor` |
-| `TileDatabase` | ScriptableObject with `List<TileData>` |
-| `TokenDatabase` | ScriptableObject with 6 token slots |
+| Class           | Responsibility                                             |
+| --------------- | ---------------------------------------------------------- |
+| `TileData`      | Define tile: ID, sprite, segments, rotation, grid position |
+| `TokenData`     | Define token: ID, sprite, owner, type, glyph ID            |
+| `PathSegment`   | Connect two `EdgeNode` values with `PathColor`             |
+| `TileDatabase`  | ScriptableObject with `List<TileData>`                     |
+| `TokenDatabase` | ScriptableObject with 6 token slots                        |
 
 ### View Layer
 
-| Class | Responsibility |
-|-------|----------------|
-| `TileManager` | Spawn tiles, grid-to-world conversion, hold `TileDatabase` |
-| `TokenManager` | Spawn tokens, handle glyph events, snap to nodes |
-| `TileView` | MonoBehaviour on tile GameObjects, manage sprite |
-| `TokenView` | MonoBehaviour on token GameObjects, manage position |
-| `BackgroundRenderer` | Render board background |
-| `GridOverlayRenderer` | Draw 5×5 grid with glow effect |
-| `CameraController` | Configure orthographic camera |
+| Class                 | Responsibility                                             |
+| --------------------- | ---------------------------------------------------------- |
+| `TileManager`         | Spawn tiles, grid-to-world conversion, hold `TileDatabase` |
+| `TokenManager`        | Spawn tokens, handle glyph events, snap to nodes           |
+| `TileView`            | MonoBehaviour on tile GameObjects, manage sprite           |
+| `TokenView`           | MonoBehaviour on token GameObjects, manage position        |
+| `BackgroundRenderer`  | Render board background                                    |
+| `GridOverlayRenderer` | Draw 5×5 grid with glow effect                             |
+| `CameraController`    | Configure orthographic camera                              |
 
 ### Input Layer
 
-| Class | Responsibility |
-|-------|----------------|
+| Class          | Responsibility                                        |
+| -------------- | ----------------------------------------------------- |
 | `InputManager` | Poll `BoardInput`, fire events, coordinate conversion |
 
 ## Data Flow
 
-```
+```text
 Board Hardware (touch/glyph)
          │
          ▼
@@ -172,7 +175,7 @@ TokenState
 
 ## Scene Hierarchy
 
-```
+```text
 GameplayScene
 ├── MainCamera [CameraController]
 ├── GlobalLight2D
@@ -213,6 +216,7 @@ float y = LayoutConfig.GridBottom + (gridY * LayoutConfig.TileSize) + (LayoutCon
 ### Creating New Managers
 
 Follow singleton pattern:
+
 ```csharp
 public class NewManager : MonoBehaviour
 {
@@ -229,6 +233,7 @@ public class NewManager : MonoBehaviour
 ### Creating New Data Types
 
 For immutable data in `Core/Data/`:
+
 ```csharp
 namespace ZeroDayAttack.Core.Data
 {
@@ -244,6 +249,7 @@ namespace ZeroDayAttack.Core.Data
 ### Creating New View Components
 
 For visual components in `View/`:
+
 ```csharp
 namespace ZeroDayAttack.View
 {
@@ -260,12 +266,14 @@ namespace ZeroDayAttack.View
 ### Reference Files
 
 For comprehensive architecture details:
+
 - **Documentation/ARCHITECTURE-ANALYSIS.md** - Full architecture documentation
 - **Documentation/DIGITIZATION-ANALYSIS.md** - Data structures, algorithms
 
 ### Key Files
 
 When modifying architecture, review:
+
 - `LayoutConfig.cs` - All layout constants
 - `GameManager.cs` - Game orchestration
 - `TileManager.cs` - Tile coordinate conversion

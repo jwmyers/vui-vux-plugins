@@ -1,10 +1,8 @@
 ---
-name: build
+name: build-apk
 description: Build APK for Board hardware deployment
-allowed-tools:
-  - Bash
-  - Read
-argument-hint: "[output-path]"
+allowed-tools: "*"
+argument-hint: [output-path]
 ---
 
 # Build APK
@@ -14,12 +12,14 @@ Build the Zero-Day Attack APK for Android/Board deployment.
 ## Process
 
 1. Verify build settings are correct for Board hardware:
+
    - Platform: Android
    - Scripting Backend: IL2CPP
    - Target Architecture: ARM64
    - API Level: 33
 
 2. Guide user through Unity build process:
+
    - Open File > Build Settings (or Build Profiles in Unity 6)
    - Ensure Android platform selected
    - Click Build
@@ -31,6 +31,7 @@ Build the Zero-Day Attack APK for Android/Board deployment.
 ## Build Settings Reference
 
 Required configuration:
+
 - **Platform**: Android
 - **Minimum API Level**: Android 13 (API 33)
 - **Scripting Backend**: IL2CPP

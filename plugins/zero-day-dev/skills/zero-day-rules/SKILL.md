@@ -1,7 +1,7 @@
 ---
-name: Zero-Day Attack Game Rules
+name: zero-day-rules
 description: This skill should be used when the user asks about "game rules", "scoring", "phases", "Attack token", "Exploit token", "Ghost token", "tile placement rules", "path matching", "movement rules", "winning conditions", "turn actions", "firewall breach", "path segments", "edge nodes", or discusses Zero-Day Attack game mechanics and design.
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Zero-Day Attack Game Rules
@@ -30,6 +30,7 @@ Move Attack token toward the firewall (board edge) by placing tiles and moving a
 ### Midpoint: Exploit
 
 When Attack token reaches firewall:
+
 1. Replace Attack token with Exploit token (automatic, no action cost)
 2. Exploit token remains at this location permanently
 3. Continue with remaining actions if any
@@ -39,6 +40,7 @@ When Attack token reaches firewall:
 Move Ghost token away from the Exploit position.
 
 **First move after Exploit**:
+
 1. Place Ghost token at Exploit location
 2. Move Ghost away in the same Move action
 
@@ -46,25 +48,30 @@ Move Ghost token away from the Exploit position.
 
 ## Board Layout
 
-### Zones
+### Digital Implementation (Board SDK)
 
-```
-┌─────────────────────────────────────┐
-│  BLUE RESERVE POOL (5 tile spaces)  │  ← Visible to both players
-├─────────────────────────────────────┤
-│                                     │
-│      PLAYABLE GRID (5×5 tiles)      │  ← Purple "Firewall" border
-│      Center tile pre-placed         │
-│                                     │
-├─────────────────────────────────────┤
-│  RED RESERVE POOL (5 tile spaces)   │  ← Visible to both players
-└─────────────────────────────────────┘
+Target display: 1920×1080 pixels (landscape, 16:9)
+
+### Horizontal Layout
+
+```text
+┌────────┬──────────┬────────────────────────────┬──────────┬────────┐
+│Blue UI │ Blue Res │       5×5 PLAYABLE GRID    │ Red Res  │ Red UI │
+│        │ (5 tiles)│    Purple "Firewall"       │ (5 tiles)│        │
+│        │          │    Center tile pre-placed  │          │        │
+└────────┴──────────┴────────────────────────────┴──────────┴────────┘
+← Blue player sits here                      Red player sits here →
 ```
 
-- **Reserve Pools**: Top (Blue) and bottom (Red) for drawn tiles
+- **Reserve Pools**: Left (Blue) and Right (Red) for drawn tiles - visible to both players
 - **Playable Grid**: 5×5 center area for tile placement
 - **Firewall**: Purple border - reaching it completes Phase 1
 - **Starting Tile**: Center position [2,2] with game-tile-13-center
+
+### Player Orientation
+
+- **Blue player**: Views from LEFT side
+- **Red player**: Views from RIGHT side
 
 ## Tile System
 
@@ -77,19 +84,22 @@ Move Ghost token away from the Exploit position.
 ### Path Segments
 
 **By Shape**:
+
 - **Quarter-curve**: Connects adjacent nodes (90° apart) - e.g., Left→Top
 - **Straight line**: Connects opposite nodes (180° apart) - e.g., Left→Right
 
 **By Color**:
-| Color | Hex | Who Can Traverse |
-|-------|-----|------------------|
-| Red | `#FF2244` | Red player only |
-| Blue | `#44BBFF` | Blue player only |
-| Purple | `#BB88FF` | Either player |
+
+| Color  | Hex       | Who Can Traverse |
+| ------ | --------- | ---------------- |
+| Red    | `#FF2244` | Red player only  |
+| Blue   | `#44BBFF` | Blue player only |
+| Purple | `#BB88FF` | Either player    |
 
 ### Path Matching Rules
 
 At connecting edges:
+
 - Red ↔ Red: Valid
 - Blue ↔ Blue: Valid
 - Purple ↔ Any: Valid
@@ -101,11 +111,11 @@ Once placed, tiles cannot be moved, removed, or rotated.
 
 ### Three Tokens Per Player
 
-| Token | Design | Phase | Purpose |
-|-------|--------|-------|---------|
-| **Attack** | Filled target with crosshair | Phase 1 | Navigate to firewall |
+| Token       | Design                        | Phase    | Purpose                 |
+| ----------- | ----------------------------- | -------- | ----------------------- |
+| **Attack**  | Filled target with crosshair  | Phase 1  | Navigate to firewall    |
 | **Exploit** | Hollow rings, faint crosshair | Midpoint | Mark breach permanently |
-| **Ghost** | Gradient opacity circles | Phase 2 | Retreat from breach |
+| **Ghost**   | Gradient opacity circles      | Phase 2  | Retreat from breach     |
 
 ### Token Rules
 
@@ -122,13 +132,13 @@ Each turn: **Two Single Actions** OR **One Double Action**
 
 ### Single Actions
 
-| Action | Description | Restrictions |
-|--------|-------------|--------------|
-| **Draw** | Take top tile from deck | None |
-| **Discard** | Remove tile from reserve | Only after deck empty |
-| **Steal** | Take from opponent's reserve | Max 2/turn; opponent can steal 1 back |
-| **Place** | Place tile at token's edge | Must connect to token position |
-| **Move** | Move along valid paths | Color continuity rules |
+| Action      | Description                  | Restrictions                          |
+| ----------- | ---------------------------- | ------------------------------------- |
+| **Draw**    | Take top tile from deck      | None                                  |
+| **Discard** | Remove tile from reserve     | Only after deck empty                 |
+| **Steal**   | Take from opponent's reserve | Max 2/turn; opponent can steal 1 back |
+| **Place**   | Place tile at token's edge   | Must connect to token position        |
+| **Move**    | Move along valid paths       | Color continuity rules                |
 
 ### Double Action: Place
 
@@ -168,7 +178,7 @@ If tied, player with most **purple** segments wins.
 ## Setup Sequence
 
 1. Determine first player and colors
-2. Seat by color (Red at one end, Blue at other)
+2. Seat by color (Blue on left side, Red on right side)
 3. Place Attack tokens on starting tile's matching color nodes
 4. Each player draws 5 tiles
 5. **First player**: Place 1 tile adjacent to center, keep 3 in reserve, shuffle 1 back
@@ -193,9 +203,12 @@ If tied, player with most **purple** segments wins.
 ### Reference Files
 
 For detailed analysis and implementation guidance:
+
 - **Documentation/ZERO-DAY-ATTACK-rules-instructions.md** - Official rulebook
 - **Documentation/RULES-ANALYSIS.md** - Comprehensive mechanics breakdown
 - **Documentation/DIGITIZATION-ANALYSIS.md** - Digital implementation details
+
+> **Important**: The official rulebook describes the original physical game with a **portrait orientation** (Blue at top, Red at bottom). The digital Board SDK implementation uses **landscape orientation** (Blue on left, Red on right) to fit the 1920×1080 display. Game mechanics are identical; only the physical layout differs.
 
 ### Key Algorithms
 

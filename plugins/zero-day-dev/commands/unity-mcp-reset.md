@@ -9,67 +9,68 @@ allowed-tools:
 
 # Reset Unity MCP Settings
 
-Reset the Unity MCP tool configuration to minimal defaults to preserve context window space.
+Reset the Unity MCP tool configuration to disable all tools, freeing context space after MCP work is complete.
 
 ## Purpose
 
-Unity MCP tools can return large amounts of data. This command configures default settings that minimize context usage while maintaining functionality.
+After completing MCP operations (scene modifications, testing, etc.), use this command to disable tool groups and preserve context window space. The MCP Resource remains available for scene inspection.
+
+## Usage
+
+```
+/unity-mcp-reset
+```
+
+## What Gets Reset
+
+| Item             | Action                         |
+| ---------------- | ------------------------------ |
+| All tools (50)   | Set to `enabled: false`        |
+| All prompts (47) | Unchanged (remain `false`)     |
+| MCP Resource     | **Unchanged** (remains `true`) |
+
+**Important**: The MCP Resource "GameObject from Current Scene by Path" is NOT affected by reset. It always remains enabled for scene inspection.
 
 ## Process
 
-1. Review current AI-Game-Developer-Config.json settings
+1. Read current AI-Game-Developer-Config.json settings
+2. Set all tools to `enabled: false`
+3. Leave resources and prompts unchanged
+4. Save updated configuration
+5. Report what was disabled
 
-2. Apply minimal defaults:
-   - Reduce serialization depth
-   - Limit hierarchy depth
-   - Disable verbose output by default
-   - Minimize included data fields
-
-3. Save updated configuration
+If all tools are already disabled, notify the user.
 
 ## Configuration File
 
 Location: `Assets/Resources/AI-Game-Developer-Config.json`
 
-## Minimal Settings Recommendations
+## When to Use
 
-When using MCP tools, prefer these patterns:
+- After scene-builder completes modifications
+- After test-engineer runs tests
+- After any MCP tool operation
+- When mcp-coordinator suggests cleanup
 
-**Scene queries:**
-```json
-{
-  "includeChildrenDepth": 1,
-  "includeData": false,
-  "deepSerialization": false
-}
+## Output Format
+
+```text
+## MCP Tools Reset
+
+### Disabled
+- gameobject (8 tools)
+- component (7 tools)
+- testing (3 tools)
+
+### Still Available
+- MCP Resource: GameObject from Current Scene by Path (always enabled)
+- Use `/unity-mcp-scene-info` for scene inspection
+
+All tool groups disabled. Context preserved.
 ```
 
-**Component inspection:**
-```json
-{
-  "includeFields": true,
-  "includeProperties": false,
-  "deepSerialization": false
-}
-```
+## Related Commands
 
-**Test runs:**
-```json
-{
-  "includePassingTests": false,
-  "includeMessages": true,
-  "includeStacktrace": false,
-  "includeLogs": false
-}
-```
-
-## Best Practices
-
-- Only request data actually needed
-- Use shallow serialization unless deep inspection required
-- Filter test output to failures only
-- Limit hierarchy depth for scene queries
-
-## Notes
-
-This command helps maintain efficient context usage when working with Unity MCP tools. Adjust settings based on specific needs when deeper inspection is required.
+- `/unity-mcp-enable [groups]` - Enable specific tool groups
+- `/unity-mcp-status` - Check current enabled status
+- `/unity-mcp-scene-info` - Query scene objects (always available)
