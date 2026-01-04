@@ -267,9 +267,17 @@ Enter hex values directly: `#FF2244`, `#44BBFF`, etc.
 
 ### Reference Files
 
-For complete visual specifications:
+This skill's `references/` folder contains:
 
-- **Documentation/game-visual-style-guide.md** - Full style guide
-- **Documentation/tile-style-guide.svg** - Visual reference with examples
+| File                    | Content                            |
+| ----------------------- | ---------------------------------- |
+| `color-system.md`       | Full palette with hex codes        |
+| `rendering-order.md`    | 7 layers, sorting order            |
+| `svg-specifications.md` | viewBox, stroke widths, path types |
+| `token-designs.md`      | Attack/Exploit/Ghost visuals       |
+| `tile-styling.md`       | Tile background, path rendering    |
+
+### Project Files
+
 - **Assets/Tiles/** - Reference existing tile SVGs
 - **Assets/Tokens/** - Reference existing token SVGs

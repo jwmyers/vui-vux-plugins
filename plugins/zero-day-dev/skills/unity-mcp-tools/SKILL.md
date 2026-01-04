@@ -166,10 +166,13 @@ The MCP Resource is always enabled. Tools default to disabled.
 ### Reference Files
 
 For complete tool documentation:
+This skill's `references/` folder contains:
 
-- **`references/tool-reference.md`** - All 50 tools with parameters and examples
-- **`references/tool-groups.md`** - Tool group definitions with JSON arrays for each group
-- **`references/troubleshooting.md`** - Common issues and solutions
+| File                 | Content                       |
+| -------------------- | ----------------------------- |
+| `tool-reference.md`  | All 50 MCP tools by category  |
+| `tool-groups.md`     | 11 tool groups with use cases |
+| `troubleshooting.md` | Connection issues and fixes   |
 
 ### Related Documentation
 

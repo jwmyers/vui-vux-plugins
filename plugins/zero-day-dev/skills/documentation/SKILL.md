@@ -1,7 +1,7 @@
 ---
 name: documentation
 description: This skill should be used when the user asks about "update documentation", "CLAUDE.md", "README.md", "documentation conventions", "document this", "add to docs", "update the readme", or discusses project documentation maintenance and standards.
-version: 0.2.0
+version: 0.5.0
 ---
 
 # Documentation
@@ -47,20 +47,21 @@ User-facing project introduction:
 | AI-Assisted Development | MCP quick start          |
 | Credits                 | Attribution              |
 
-### Documentation Folder
+### Skill Reference Folders
 
-Detailed technical documentation:
+Domain knowledge is distributed across plugin skill reference folders:
 
-| File                                    | Content                   |
-| --------------------------------------- | ------------------------- |
-| `ARCHITECTURE-ANALYSIS.md`              | Code architecture details |
-| `DIGITIZATION-ANALYSIS.md`              | Implementation specs      |
-| `RULES-ANALYSIS.md`                     | Game mechanics breakdown  |
-| `BOARD-TILE-SIZING-ANALYSIS.md`         | Layout and sizing guide   |
-| `game-visual-style-guide.md`            | Colors and styling        |
-| `Unity-MCP-Documentation.md`            | MCP setup and usage       |
-| `ZERO-DAY-ATTACK-rules-instructions.md` | Official rulebook         |
-| `Board-SDK-Documentation/`              | SDK reference manual      |
+| Skill                  | Domain          | Key References                          |
+| ---------------------- | --------------- | --------------------------------------- |
+| `zero-day-rules`       | Game mechanics  | complete-rules.md, phase-mechanics.md   |
+| `board-sdk`            | SDK integration | vendor-docs/, contact-handling.md       |
+| `project-architecture` | Code patterns   | layer-model.md, data-flow.md            |
+| `layout-sizing`        | Screen math     | coordinate-systems.md, layout-config.md |
+| `visual-style-guide`   | Visual specs    | color-system.md, rendering-order.md     |
+| `unity-mcp-tools`      | MCP tools       | tool-reference.md, tool-groups.md       |
+| `unity-testing`        | Tests           | test-patterns.md, existing-tests.md     |
+
+Load skills with `/zero-day-dev:{skill-name}` before spawning agents.
 
 ## Documentation Conventions
 
@@ -99,11 +100,17 @@ Use for structured data:
 
 ### File References
 
-Use relative paths from project root:
+For project files, use relative paths:
 
 ```markdown
-See `Documentation/ARCHITECTURE-ANALYSIS.md`
 Located in `Assets/Scripts/Config/`
+```
+
+For domain knowledge, load skills:
+
+```markdown
+Load `/zero-day-dev:project-architecture` for architecture details
+Load `/zero-day-dev:board-sdk` for SDK integration patterns
 ```
 
 ## Updating CLAUDE.md
@@ -123,7 +130,7 @@ Update CLAUDE.md when:
 1. Identify section needing update
 2. Keep format consistent with existing sections
 3. Update related sections if affected
-4. Keep concise - detail goes in Documentation/
+4. Keep concise - detail goes in skill references
 
 ### Key Sections to Maintain
 
@@ -167,30 +174,36 @@ README is for users, not AI:
 - Troubleshooting tips
 - Working commands
 
-## Documentation Folder Updates
+## Skill Reference Updates
 
-### When to Update Documentation Folder Files
+### When to Update Skill References
 
-Update Documentation files when:
+Update skill reference files when:
 
 - Significant implementation changes
 - New systems added
 - Algorithms change
 - Rules clarified
 
-### Create New Files When
+### Routing Guide
 
-- New major system (e.g., multiplayer)
-- Complex feature needing dedicated docs
-- External integration guide
+| Change Type       | Update Skill                       |
+| ----------------- | ---------------------------------- |
+| Game mechanics    | `zero-day-rules/references/`       |
+| Code architecture | `project-architecture/references/` |
+| SDK patterns      | `board-sdk/references/`            |
+| Layout/sizing     | `layout-sizing/references/`        |
+| Visual specs      | `visual-style-guide/references/`   |
+| MCP tools         | `unity-mcp-tools/references/`      |
+| Test patterns     | `unity-testing/references/`        |
 
 ### Naming Convention
 
-Use UPPERCASE-WITH-DASHES for analysis docs:
+Use lowercase-with-dashes for reference files:
 
 ```text
-NEW-FEATURE-ANALYSIS.md
-SYSTEM-NAME-DOCUMENTATION.md
+new-feature.md
+system-name.md
 ```
 
 ## Plugin Documentation
@@ -294,17 +307,17 @@ After significant changes:
 
 - [ ] CLAUDE.md updated if architecture/build changed
 - [ ] README.md updated if user-facing changed
-- [ ] Documentation/\*.md updated if systems changed
-- [ ] Skills updated if domain knowledge changed
+- [ ] Skill references updated if domain knowledge changed
+- [ ] SKILL.md updated if triggers/guidance changed
 - [ ] Comments in code are accurate
 
 ### Cross-Reference Check
 
 Ensure consistency between:
 
-- CLAUDE.md ↔ ARCHITECTURE-ANALYSIS.md
+- CLAUDE.md ↔ skill reference summaries
 - README.md ↔ CLAUDE.md (no conflicts)
-- Skills ↔ Documentation files they reference
+- Skills ↔ their reference folders
 
 ## Additional Resources
 
@@ -314,7 +327,7 @@ Study existing documentation:
 
 - **CLAUDE.md** - AI guidance format
 - **README.md** - User documentation format
-- **Documentation/ARCHITECTURE-ANALYSIS.md** - Technical doc format
+- **Skill references** - Domain knowledge format (see routing guide above)
 
 ### Style Guidelines
 

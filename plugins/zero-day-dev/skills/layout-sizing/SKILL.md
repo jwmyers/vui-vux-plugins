@@ -252,12 +252,19 @@ public static EdgeNode RotateEdge(EdgeNode node, int rotationSteps)
 
 ## Additional Resources
 
-### Reference Files
+### Skill Reference Files
 
-For complete sizing documentation:
+This skill's `references/` folder contains:
 
-- **Documentation/BOARD-TILE-SIZING-ANALYSIS.md** - Comprehensive layout guide
-- **Documentation/game-visual-style-guide.md** - Colors and styling
+| File                     | Content                                 |
+| ------------------------ | --------------------------------------- |
+| `coordinate-systems.md`  | Grid, World, Screen conversion formulas |
+| `layout-config.md`       | All LayoutConfig constants              |
+| `svg-import-settings.md` | PPU=100 rule, Texture Size formula      |
+| `player-zones.md`        | Reserve pools, hand areas               |
+
+### Project Files
+
 - **Assets/Scripts/Config/LayoutConfig.cs** - All constants
 
 ### Quick Reference

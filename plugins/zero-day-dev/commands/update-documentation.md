@@ -6,7 +6,7 @@ allowed-tools: "*"
 
 # Update Documentation
 
-Update project documentation to reflect recent changes. This command coordinates documentation updates across CLAUDE.md, README.md, and Documentation/ files.
+Update project documentation to reflect recent changes. This command coordinates documentation updates across CLAUDE.md, README.md, and skill reference files.
 
 ## Process
 
@@ -29,13 +29,15 @@ Update project documentation to reflect recent changes. This command coordinates
    - Setup instructions
    - Usage examples
 
-4. **Update Documentation/** (if systems changed)
+4. **Update Skill References** (if domain knowledge changed)
 
-   - ARCHITECTURE-ANALYSIS.md
-   - DIGITIZATION-ANALYSIS.md
-   - Other technical docs
+   - `zero-day-rules/references/` for game mechanics
+   - `board-sdk/references/` for SDK patterns
+   - `project-architecture/references/` for code architecture
+   - `layout-sizing/references/` for layout math
+   - `visual-style-guide/references/` for visual specs
 
-5. **Update Plugin Components** (if domain knowledge changed)
+5. **Update Plugin Components** (if workflows changed)
 
    - Skills (skills/\*/SKILL.md)
    - Agents (agents/\*.md)
@@ -44,21 +46,23 @@ Update project documentation to reflect recent changes. This command coordinates
    - Check links between files
    - Ensure consistency
 
-## Documentation Files
+## Documentation Targets
 
-| File                                     | Update When                                |
-| ---------------------------------------- | ------------------------------------------ |
-| `CLAUDE.md`                              | Architecture, build, configuration changes |
-| `README.md`                              | User-facing features change                |
-| `Documentation/ARCHITECTURE-ANALYSIS.md` | Code architecture changes                  |
-| `Documentation/DIGITIZATION-ANALYSIS.md` | Implementation changes                     |
-| `Documentation/RULES-ANALYSIS.md`        | Game mechanics clarified                   |
+| Target                             | Update When                                |
+| ---------------------------------- | ------------------------------------------ |
+| `CLAUDE.md`                        | Architecture, build, configuration changes |
+| `README.md`                        | User-facing features change                |
+| `zero-day-rules/references/`       | Game mechanics clarified                   |
+| `board-sdk/references/`            | SDK usage patterns change                  |
+| `project-architecture/references/` | Code architecture changes                  |
+| `layout-sizing/references/`        | Layout/sizing changes                      |
+| `visual-style-guide/references/`   | Visual specs change                        |
 
 ## Update Guidelines
 
 **CLAUDE.md:**
 
-- Keep concise - detail goes in Documentation/
+- Keep concise - detail goes in skill references
 - Focus on actionable information for AI
 - Use tables for structured data
 - Include code examples
@@ -69,11 +73,11 @@ Update project documentation to reflect recent changes. This command coordinates
 - Working commands
 - Clear setup instructions
 
-**Documentation/:**
+**Skill References:**
 
-- Comprehensive technical detail
-- Code examples
-- Architecture diagrams
+- Comprehensive domain knowledge
+- Code examples and patterns
+- Organized by topic
 
 ## Output
 
@@ -96,5 +100,5 @@ Provide summary of updates:
 
 - Maintain existing format and style
 - Don't duplicate information across files
-- Keep CLAUDE.md lean, detail in Documentation/
+- Keep CLAUDE.md lean, detail in skill references
 - Test any code examples included

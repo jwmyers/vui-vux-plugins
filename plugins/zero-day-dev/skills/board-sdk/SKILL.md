@@ -206,10 +206,12 @@ Test without hardware using Board's Simulator:
 To test glyph/piece detection in the simulator:
 
 1. **Create Simulation Icons**: For each piece type, create a `BoardContactSimulationIcon` ScriptableObject
+
    - Right-click in Project > Create > Board > Contact Simulation Icon
    - Set the GlyphId to match the token's GlyphId in TokenDatabase
 
 2. **Configure Palette**: Add icons to the simulator palette
+
    - Open Board > Input > Simulator
    - Add each simulation icon to the available palette
 
@@ -315,14 +317,19 @@ Use `IsTouched` for gameplay:
 
 For comprehensive SDK documentation:
 
-- **Documentation/Board-SDK-Documentation/** - Full SDK reference
-  - `overview.md` - SDK introduction
-  - `learn/concepts.md` - Core terminology
-  - `learn/touch-system.md` - Touch handling details
-  - `learn/pieces.md` - Piece/glyph recognition
-  - `guides/touch-input.md` - Implementation guide
-  - `guides/simulator.md` - Simulator usage
-  - `reference/` - API documentation
+### Skill Reference Files
+
+This skill's `references/` folder contains complete SDK documentation:
+
+| File                      | Content                                        |
+| ------------------------- | ---------------------------------------------- |
+| `vendor-docs-index.md`    | Index of all 26 vendor documentation files     |
+| `vendor-docs/`            | Complete vendor SDK documentation (local copy) |
+| `sample-code-guide.md`    | Walkthrough of BoardInputManager patterns      |
+| `contact-handling.md`     | BoardContact properties and lifecycle          |
+| `integration-patterns.md` | Zero-Day Attack specific patterns              |
+| `glyph-detection.md`      | GlyphId mapping and TokenDatabase setup        |
+| `simulator-setup.md`      | BoardContactSimulationIcon configuration       |
 
 ### Key APIs
 

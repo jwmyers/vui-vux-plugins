@@ -202,11 +202,17 @@ If tied, player with most **purple** segments wins.
 
 ### Reference Files
 
-For detailed analysis and implementation guidance:
+This skill's `references/` folder contains:
 
-- **Documentation/ZERO-DAY-ATTACK-rules-instructions.md** - Official rulebook
-- **Documentation/RULES-ANALYSIS.md** - Comprehensive mechanics breakdown
-- **Documentation/DIGITIZATION-ANALYSIS.md** - Digital implementation details
+| File                 | Content                                 |
+| -------------------- | --------------------------------------- |
+| `complete-rules.md`  | Full original rules with diagrams       |
+| `diagrams/`          | 19 SVG diagrams for rules visualization |
+| `phase-mechanics.md` | Attack→Exploit→Ghost transitions        |
+| `tile-system.md`     | 25 tiles, edge nodes, path segments     |
+| `token-system.md`    | 3 tokens per player, placement rules    |
+| `action-system.md`   | Draw, Discard, Steal, Place, Move       |
+| `scoring-endgame.md` | Win conditions, path counting           |
 
 > **Important**: The official rulebook describes the original physical game with a **portrait orientation** (Blue at top, Red at bottom). The digital Board SDK implementation uses **landscape orientation** (Blue on left, Red on right) to fit the 1920×1080 display. Game mechanics are identical; only the physical layout differs.
 
@@ -216,4 +222,4 @@ For detailed analysis and implementation guidance:
 - Movement validation (path continuity)
 - Score calculation (path finding between tokens)
 
-Consult DIGITIZATION-ANALYSIS.md for C# code examples of these algorithms.
+Request consultation from the `code-architecht` subagent or the `project-architecture` skill for C# code examples of these algorithms.

@@ -56,9 +56,14 @@ You are the Game Designer for Zero-Day Attack, the expert on game rules, mechani
 
 Reference these documentation files for authoritative information:
 
-- `Documentation/ZERO-DAY-ATTACK-rules-instructions.md` - Official rulebook
-- `Documentation/RULES-ANALYSIS.md` - Detailed mechanics breakdown
-- `Documentation/DIGITIZATION-ANALYSIS.md` - Digital implementation specs
+Load the `zero-day-rules` skill for complete game mechanics knowledge:
+
+- `references/complete-rules.md` - Full rulebook with diagrams
+- `references/phase-mechanics.md` - Game phase transitions
+- `references/tile-system.md` - Tile mechanics and edge nodes
+- `references/token-system.md` - Token placement and movement
+- `references/action-system.md` - Player actions
+- `references/scoring-endgame.md` - Win conditions
 
 ## Core Game Concepts
 
@@ -137,14 +142,15 @@ For design advice:
 
 ## Related Agents
 
-| For This Work | Use Instead |
-|---------------|-------------|
-| Code implementation | code-architect |
-| Visual feedback | ui-ux-developer |
+| For This Work        | Use Instead     |
+| -------------------- | --------------- |
+| Code implementation  | code-architect  |
+| Visual feedback      | ui-ux-developer |
 | Touch/input handling | input-developer |
-| Unity scene changes | scene-builder |
+| Unity scene changes  | scene-builder   |
 
 **Do NOT Use When:**
+
 - Task is code implementation (use code-architect)
 - Task is layout/positioning (use ui-ux-developer)
 - Task is SDK/input handling (use input-developer)

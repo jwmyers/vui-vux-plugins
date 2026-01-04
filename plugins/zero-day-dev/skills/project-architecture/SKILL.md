@@ -295,10 +295,15 @@ namespace ZeroDayAttack.View
 
 ### Reference Files
 
-For comprehensive architecture details:
+This skill's `references/` folder contains:
 
-- **Documentation/ARCHITECTURE-ANALYSIS.md** - Full architecture documentation
-- **Documentation/DIGITIZATION-ANALYSIS.md** - Data structures, algorithms
+| File                        | Content                                               |
+| --------------------------- | ----------------------------------------------------- |
+| `layer-model.md`            | The 6 layers: Data, State, Logic, View, Input, Config |
+| `data-flow.md`              | State ownership, event patterns                       |
+| `class-responsibilities.md` | GameManager, TileManager, TokenManager, InputManager  |
+| `scene-hierarchy.md`        | GameplayScene structure                               |
+| `design-decisions.md`       | Why singletons, naming conventions, etc.              |
 
 ### Key Files
 
