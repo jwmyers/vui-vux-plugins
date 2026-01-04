@@ -50,7 +50,7 @@ Location: `Assets/Resources/AI-Game-Developer-Config.json`
 - After scene-builder completes modifications
 - After test-engineer runs tests
 - After any MCP tool operation
-- When mcp-coordinator suggests cleanup
+- When mcp-advisor suggests cleanup
 
 ## Output Format
 

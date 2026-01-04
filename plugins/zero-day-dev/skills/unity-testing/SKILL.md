@@ -408,18 +408,58 @@ Tests game startup:
 - Scene hierarchy valid
 - Initial state correct
 
-## Additional Resources
+## Mocking & Isolation
 
-### Reference Files
+For Unity testing without external dependencies:
 
-For test examples:
+| Technique            | Use Case                        |
+| -------------------- | ------------------------------- |
+| Interface extraction | Mock complex dependencies       |
+| ScriptableObjects    | Test data without scene loading |
+| Prefab instantiation | Isolated component testing      |
+| `Resources.Load()`   | Load test assets in EditMode    |
 
-- **Assets/Tests/Editor/** - EditMode test examples
-- **Assets/Tests/Runtime/** - PlayMode test examples
+## Common Mistakes
 
-### Running Tests in Unity
+| Mistake                         | Solution                                   |
+| ------------------------------- | ------------------------------------------ |
+| Tests depend on execution order | Use `[SetUp]`/`[TearDown]` for state reset |
+| Missing scene for PlayMode      | Load required scene in `[UnitySetUp]`      |
+| Shared mutable state            | Create fresh objects in each test          |
+| Not cleaning up GameObjects     | Destroy test objects in `[UnityTearDown]`  |
+| Using PlayMode for pure logic   | Move to EditMode for faster iteration      |
+
+## When to Use EditMode vs PlayMode
+
+| Use EditMode When...             | Use PlayMode When...                 |
+| -------------------------------- | ------------------------------------ |
+| Testing pure C# logic            | Testing MonoBehaviour lifecycle      |
+| Validating ScriptableObject data | Testing scene interactions           |
+| Testing static calculations      | Testing coroutines or async behavior |
+| Fast iteration is important      | Need Update/FixedUpdate behavior     |
+
+## Reference Files
+
+This skill's `references/` folder contains:
+
+| File                | Contains                                     | Read When                            |
+| ------------------- | -------------------------------------------- | ------------------------------------ |
+| `editmode-tests.md` | EditMode test examples, `[Test]` attribute   | Writing editor/data validation tests |
+| `playmode-tests.md` | PlayMode patterns, `[UnityTest]`, coroutines | Writing runtime/scene tests          |
+| `test-patterns.md`  | AAA pattern, naming, isolation, mocking      | Need test architecture guidance      |
+| `existing-tests.md` | Current project tests and what they cover    | Understanding test coverage          |
+
+## Running Tests
+
+### In Unity Editor
 
 Window > General > Test Runner
 
 - EditMode tab for editor tests
 - PlayMode tab for runtime tests
+
+### Via MCP
+
+Enable testing group: `/unity-mcp-enable testing`
+
+Then use `tests-run` tool with filter options.

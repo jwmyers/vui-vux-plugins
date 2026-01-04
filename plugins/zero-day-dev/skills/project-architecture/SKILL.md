@@ -291,24 +291,40 @@ namespace ZeroDayAttack.View
 }
 ```
 
-## Additional Resources
+## Design Rationale
 
-### Reference Files
+Key architectural decisions and their reasoning:
+
+| Decision                         | Why                                                                   |
+| -------------------------------- | --------------------------------------------------------------------- |
+| **TileManager not BoardManager** | Avoids confusion with Board SDK (`BoardInput`, `BoardContact`)        |
+| **Separate Tile/Token managers** | Different behaviors: tiles fixed, tokens move with players            |
+| **InputManager singleton**       | Centralizes SDK, enables mocking, single coordinate conversion        |
+| **ScriptableObject databases**   | Inspector-editable, survives refactoring, testable via Resources.Load |
+| **Board SDK isolation**          | Only InputManager imports SDK, enables testing without hardware       |
+| **Event-based communication**    | Decouples logic from presentation, multiple listeners                 |
+
+For full rationale with examples, see `design-decisions.md` in references.
+
+## Reference Files
 
 This skill's `references/` folder contains:
 
-| File                        | Content                                               |
-| --------------------------- | ----------------------------------------------------- |
-| `layer-model.md`            | The 6 layers: Data, State, Logic, View, Input, Config |
-| `data-flow.md`              | State ownership, event patterns                       |
-| `class-responsibilities.md` | GameManager, TileManager, TokenManager, InputManager  |
-| `scene-hierarchy.md`        | GameplayScene structure                               |
-| `design-decisions.md`       | Why singletons, naming conventions, etc.              |
+| File                        | Contains                                              | Read When                           |
+| --------------------------- | ----------------------------------------------------- | ----------------------------------- |
+| `layer-model.md`            | The 6 layers: Data, State, Logic, View, Input, Config | Understanding layer boundaries      |
+| `data-flow.md`              | State ownership diagram, event patterns               | Implementing state changes          |
+| `class-responsibilities.md` | GameManager, TileManager, TokenManager, InputManager  | Adding features to existing classes |
+| `scene-hierarchy.md`        | GameplayScene structure, GameObject organization      | Modifying scene or adding objects   |
+| `design-decisions.md`       | Why singletons, naming conventions, SDK isolation     | Making architectural decisions      |
 
-### Key Files
+## Key Source Files
 
 When modifying architecture, review:
 
-- `LayoutConfig.cs` - All layout constants
-- `GameManager.cs` - Game orchestration
-- `TileManager.cs` - Tile coordinate conversion
+| File              | Purpose                        |
+| ----------------- | ------------------------------ |
+| `LayoutConfig.cs` | All layout constants           |
+| `GameManager.cs`  | Game orchestration singleton   |
+| `TileManager.cs`  | Tile spawning, grid conversion |
+| `InputManager.cs` | Board SDK wrapper              |

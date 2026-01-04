@@ -107,10 +107,10 @@ Agents trigger automatically based on context:
 
 ### MCP Tool Workflow
 
-1. Orchestrator enables tools: `/unity-mcp-enable [groups]`
+1. Orchestrator enables tools with this command: `/unity-mcp-enable [groups]`
 2. Spawn agent with MCP-related task
 3. Agent uses MCP tools directly
-4. Orchestrator resets: `/unity-mcp-reset`
+4. Orchestrator resets toools with this commmand: `/unity-mcp-reset`
 
 ### Agent Results
 

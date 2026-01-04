@@ -12,15 +12,17 @@ Expert knowledge for coordinating Unity MCP operations, including tool enablemen
 
 ### 1. Inspect First (Always Available)
 
-The MCP Resource is always enabled - no tool enablement needed:
+**CRITICAL:** The MCP Resource is ALWAYS enabled and never disabled - no tool enablement needed. This is the primary way agents inspect Unity:
 
-- Command: `/unity-mcp-scene-info {path}`
-- Returns: components, properties, children, transform data
-- Example: `/unity-mcp-scene-info GameplayScene/TileManager`
+- **Command:** `/unity-mcp-scene-info {path}`
+- **Returns:** components, properties, children, transform data
+- **Example:** `/unity-mcp-scene-info GameplayScene/TileManager`
+
+Most agents should use this resource for read operations before enabling any tools.
 
 ### 2. Enable Tools When Modification Needed
 
-Run `/unity-mcp-enable [groups]` before spawning agents that need MCP.
+Run `/unity-mcp-enable [groups]` before instructing agents that need MCP to fulfill a task.
 
 ### 3. Spawn Agent with Skills
 
@@ -39,9 +41,21 @@ Include `unity-mcp-tools` skill for agents doing MCP work:
 
 Run `/unity-mcp-reset` to disable tools and save context.
 
+## Commands Reference
+
+Subagents cannot use these commands, but claude code can trigger them or ask the user to use them.
+
+| Command                        | Purpose                  |
+| ------------------------------ | ------------------------ |
+| `/unity-mcp-status`            | Show enabled groups      |
+| `/unity-mcp-enable [groups]`   | Enable tool groups       |
+| `/unity-mcp-enable-all`        | Enable all tools         |
+| `/unity-mcp-reset`             | Disable all tools        |
+| `/unity-mcp-scene-info [path]` | Query scene via Resource |
+
 ## When to Consult mcp-advisor
 
-Spawn the mcp-advisor advisory agent when:
+Spawn the `mcp-advisor` advisory agent when:
 
 - Unsure which tool groups are needed
 - MCP tools returning errors
@@ -50,7 +64,7 @@ Spawn the mcp-advisor advisory agent when:
 
 Example prompt: "What MCP tool groups do I need to add a health bar UI?"
 
-The mcp-advisor returns recommendations - it does not execute commands.
+The `mcp-advisor` returns recommendations - it does not execute commands.
 
 ## Agent Skill Assignments
 
@@ -89,7 +103,7 @@ skills: unity-mcp-tools, layout-sizing
 
 Use `/unity-mcp-enable [group]` to enable. Multiple: `/unity-mcp-enable gameobject component`
 
-### Core Groups (11 total)
+### Core Groups and Tools (11 total)
 
 | Group       | Tools                                                                                                                                                                                        | Use Case                |
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
@@ -151,30 +165,39 @@ Structure:
 
 The MCP Resource is always enabled. Tools default to disabled.
 
-## Commands Reference
+## Reference Files
 
-| Command                        | Purpose                  |
-| ------------------------------ | ------------------------ |
-| `/unity-mcp-status`            | Show enabled groups      |
-| `/unity-mcp-enable [groups]`   | Enable tool groups       |
-| `/unity-mcp-enable-all`        | Enable all tools         |
-| `/unity-mcp-reset`             | Disable all tools        |
-| `/unity-mcp-scene-info [path]` | Query scene via Resource |
+This skill's `references/` folder contains complete MCP documentation organized for efficient navigation.
 
-## Additional Resources
+### Main Guides (4 files)
 
-### Reference Files
+| File                 | Contains                                     | Read When                          |
+| -------------------- | -------------------------------------------- | ---------------------------------- |
+| `mcp-setup.md`       | MCP server startup, connection verification  | Setting up or troubleshooting MCP  |
+| `tool-groups.md`     | 11 tool groups with JSON definitions         | Understanding group configurations |
+| `tool-reference.md`  | All 49 MCP tools organized by category       | Need specific tool usage details   |
+| `troubleshooting.md` | Connection issues, tool errors, common fixes | MCP not working as expected        |
 
-For complete tool documentation:
-This skill's `references/` folder contains:
+### Tool Parameter Reference (11 files in `tool-parameters/`)
 
-| File                 | Content                       |
-| -------------------- | ----------------------------- |
-| `tool-reference.md`  | All 50 MCP tools by category  |
-| `tool-groups.md`     | 11 tool groups with use cases |
-| `troubleshooting.md` | Connection issues and fixes   |
+Detailed parameters and examples for each tool category:
+
+| File                       | Tools Covered                                         |
+| -------------------------- | ----------------------------------------------------- |
+| `scene-tools.md`           | scene-get-data, scene-create, scene-save, etc.        |
+| `gameobject-tools.md`      | gameobject-create, gameobject-find, gameobject-modify |
+| `component-tools.md`       | component-add, component-get, component-modify        |
+| `script-tools.md`          | script-read, script-update-or-create, script-execute  |
+| `asset-tools.md`           | assets-find, assets-copy, assets-move, assets-delete  |
+| `prefab-tools.md`          | prefab-create, prefab-instantiate, prefab-open        |
+| `editor-tools.md`          | editor-application-get-state, editor-selection        |
+| `testing-tools.md`         | tests-run with testMode, filters, options             |
+| `package-tools.md`         | package-list, package-add, package-remove             |
+| `reflection-tools.md`      | reflection-method-find, reflection-method-call        |
+| `material-shader-tools.md` | assets-material-create, assets-shader-list-all        |
 
 ### Related Documentation
 
 - **Documentation/Unity-MCP-Documentation.md** - Full MCP setup guide
 - **.mcp.json** - Connection configuration
+- **Assets/Resources/AI-Game-Developer-Config.json** - Tool enablement config

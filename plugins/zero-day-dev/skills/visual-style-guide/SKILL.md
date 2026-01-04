@@ -173,12 +173,12 @@ Target: 1920×1080 pixels = 19.2×10.8 world units (100 PPU)
 ### Horizontal Layout Visual
 
 ```text
-┌────────┬──────────┬────────────────────────────┬──────────┬────────┐
-│Blue UI │ Blue Res │       5×5 PLAYABLE GRID    │ Red Res  │ Red UI │
-│  2.1   │   2.0    │           10.0             │   2.0    │  2.1   │
-│#44BBFF │ #44BBFF  │    #BB88FF (firewall)      │ #FF2244  │#FF2244 │
-└────────┴──────────┴────────────────────────────┴──────────┴────────┘
-← Blue player sits here                      Red player sits here →
+┌─────────┬──────────┬────────────────────────────┬──────────┬─────────┐
+│ Blue UI │ Blue Res │       5×5 PLAYABLE GRID    │ Red Res  │ Red UI  │
+│   2.1   │   2.0    │           10.0             │   2.0    │  2.1    │
+│`#44BBFF`│ `#44BBFF`│    `#BB88FF` (firewall)    │ `#FF2244`│`#FF2244`│
+└─────────┴──────────┴────────────────────────────┴──────────┴─────────┘
+← Blue player sits here                           Red player sits here →
 ```
 
 ### Player Orientation
@@ -265,19 +265,19 @@ Enter hex values directly: `#FF2244`, `#44BBFF`, etc.
 
 ## Additional Resources
 
-### Reference Files
+## Reference Files
 
 This skill's `references/` folder contains:
 
-| File                    | Content                            |
-| ----------------------- | ---------------------------------- |
-| `color-system.md`       | Full palette with hex codes        |
-| `rendering-order.md`    | 7 layers, sorting order            |
-| `svg-specifications.md` | viewBox, stroke widths, path types |
-| `token-designs.md`      | Attack/Exploit/Ghost visuals       |
-| `tile-styling.md`       | Tile background, path rendering    |
+| File                    | Contains                           | Read When                           |
+| ----------------------- | ---------------------------------- | ----------------------------------- |
+| `color-system.md`       | Full palette, hex codes, RGB       | Need exact color values             |
+| `rendering-order.md`    | 7 layers, sorting order details    | Fixing z-order/visibility issues    |
+| `svg-specifications.md` | viewBox, stroke widths, path types | Creating or modifying SVG assets    |
+| `token-designs.md`      | Attack/Exploit/Ghost visual specs  | Designing or updating token visuals |
+| `tile-styling.md`       | Tile background, path rendering    | Styling tile graphics               |
 
-### Project Files
+## Project Files
 
 - **Assets/Tiles/** - Reference existing tile SVGs
 - **Assets/Tokens/** - Reference existing token SVGs

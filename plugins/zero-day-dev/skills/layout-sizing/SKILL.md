@@ -46,6 +46,12 @@ Expert knowledge of Board display layout, coordinate systems, SVG import setting
 | Red Reserve       | +5.5     | +7.5     | +6.5    | 2.0      |
 | Red UI            | +7.5     | +9.6     | +8.55   | 2.1      |
 
+### Reserve Pool Purpose
+
+- Holds drawn tiles before placement (visible to both players)
+- Up to **3 tiles per player** maximum
+- Tiles can be **stolen** from opponent's reserve
+
 ## Vertical Layout (10.8 world units)
 
 | Zone          | Bottom | Top  | Height |
@@ -250,28 +256,35 @@ public static EdgeNode RotateEdge(EdgeNode node, int rotationSteps)
 **Cause**: Not using LayoutConfig
 **Solution**: Always use `LayoutConfig` constants for positioning
 
-## Additional Resources
+## Why 5×5 Grid?
 
-### Skill Reference Files
+- **Balanced gameplay**: Enough space for strategy, small enough for quick games
+- **Fits display**: 10.0 world units fills the 1920×1080 display with room for UI
+- **Network aesthetic**: 5×5 creates interconnected network paths matching cybersecurity theme
+
+## Reference Files
 
 This skill's `references/` folder contains:
 
-| File                     | Content                                 |
-| ------------------------ | --------------------------------------- |
-| `coordinate-systems.md`  | Grid, World, Screen conversion formulas |
-| `layout-config.md`       | All LayoutConfig constants              |
-| `svg-import-settings.md` | PPU=100 rule, Texture Size formula      |
-| `player-zones.md`        | Reserve pools, hand areas               |
+| File                     | Contains                                | Read When                          |
+| ------------------------ | --------------------------------------- | ---------------------------------- |
+| `coordinate-systems.md`  | Grid, World, Screen conversion formulas | Implementing coordinate transforms |
+| `layout-config.md`       | All LayoutConfig constants and values   | Need exact constant values         |
+| `svg-import-settings.md` | PPU=100 rule, Texture Size formula      | Importing new SVG assets           |
+| `player-zones.md`        | Reserve pools, hand areas, stealing     | Implementing reserve functionality |
 
-### Project Files
+## Key Source Files
 
-- **Assets/Scripts/Config/LayoutConfig.cs** - All constants
+| File                                    | Purpose              |
+| --------------------------------------- | -------------------- |
+| `Assets/Scripts/Config/LayoutConfig.cs` | All layout constants |
 
-### Quick Reference
+## Quick Reference
 
 ```text
 PPU = 100 (ALWAYS)
 Texture Size = World Size × 100
+NodeSnapDistance = 0.5 world units
 
 Tiles:  2.0 world units → Texture Size = 200
 Tokens: 0.4 world units → Texture Size = 40
