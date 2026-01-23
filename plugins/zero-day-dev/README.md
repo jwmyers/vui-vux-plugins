@@ -4,7 +4,7 @@ Comprehensive Unity game development assistant for Zero-Day Attack targeting Boa
 
 ## Version
 
-0.2.0
+0.3.0
 
 ## Overview
 
@@ -26,7 +26,7 @@ This plugin provides specialized agents, skills, and commands for developing the
 | **deployment-specialist** | Building APK, deploying to Board                  |
 | **mcp-advisor**           | MCP tool advice, troubleshooting                  |
 
-### Skills (8)
+### Skills (9)
 
 | Skill                    | Domain                                      |
 | ------------------------ | ------------------------------------------- |
@@ -37,22 +37,24 @@ This plugin provides specialized agents, skills, and commands for developing the
 | **visual-style-guide**   | Colors, rendering order                     |
 | **unity-mcp-tools**      | MCP tool usage and best practices           |
 | **unity-testing**        | EditMode/PlayMode tests                     |
+| **agent-coordination**   | Multi-agent workflows and orchestration     |
 | **documentation**        | Doc conventions and maintenance             |
 
-### Commands (10)
+### Commands (11)
 
-| Command                 | Description                       |
-| ----------------------- | --------------------------------- |
-| `/build-apk`            | Build APK for Board hardware      |
-| `/deploy-apk`           | Deploy to Board via bdb           |
-| `/run-unity-test`       | Run Unity tests via MCP           |
-| `/start-unity-mcp`      | Start MCP server                  |
-| `/unity-mcp-reset`      | Reset MCP tools to disabled state |
-| `/unity-mcp-enable`     | Enable specific MCP tool groups   |
-| `/unity-mcp-enable-all` | Enable all MCP tools at once      |
-| `/unity-mcp-scene-info` | Query scene via MCP Resource      |
-| `/unity-mcp-status`     | Show enabled MCP tool groups      |
-| `/update-documentation` | Update project documentation      |
+| Command                 | Description                            |
+| ----------------------- | -------------------------------------- |
+| `/start-planning`       | Orchestrated multi-agent task planning |
+| `/build-apk`            | Build APK for Board hardware           |
+| `/deploy-apk`           | Deploy to Board via bdb                |
+| `/run-unity-test`       | Run Unity tests via MCP                |
+| `/start-unity-mcp`      | Start MCP server                       |
+| `/unity-mcp-reset`      | Reset MCP tools to disabled state      |
+| `/unity-mcp-enable`     | Enable specific MCP tool groups        |
+| `/unity-mcp-enable-all` | Enable all MCP tools at once           |
+| `/unity-mcp-scene-info` | Query scene via MCP Resource           |
+| `/unity-mcp-status`     | Show enabled MCP tool groups           |
+| `/update-documentation` | Update project documentation           |
 
 ## Prerequisites
 
@@ -73,6 +75,12 @@ This plugin provides specialized agents, skills, and commands for developing the
 
 ```text
 /start-unity-mcp     # Start the MCP server
+```
+
+### Planning Complex Tasks
+
+```text
+/start-planning [task]  # Multi-agent orchestrated planning
 ```
 
 ### Building and Deploying
@@ -126,6 +134,7 @@ commands/                   # Slash commands
 ├── build-apk.md
 ├── deploy-apk.md
 ├── run-unity-test.md
+├── start-planning.md
 ├── start-unity-mcp.md
 ├── unity-mcp-enable.md
 ├── unity-mcp-enable-all.md
@@ -146,6 +155,7 @@ agents/                     # Specialized agents
 └── ui-ux-developer.md
 
 skills/                     # Domain knowledge
+├── agent-coordination/
 ├── board-sdk/
 ├── documentation/
 ├── layout-sizing/
