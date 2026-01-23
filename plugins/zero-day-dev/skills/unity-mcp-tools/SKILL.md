@@ -1,7 +1,7 @@
 ---
 name: unity-mcp-tools
 description: This skill should be used when the user asks about "MCP tools", "Unity MCP", "enable tool groups", "which MCP tools", "create GameObject", "add component", "run Unity tests", "check scene hierarchy", "spawn agent for Unity", "MCP not working", or needs to coordinate Unity Editor operations via MCP.
-version: 0.2.0
+version: 0.3.0
 ---
 
 # Unity MCP Tools
@@ -12,11 +12,35 @@ Expert knowledge for coordinating Unity MCP operations, including tool enablemen
 
 ### 1. Inspect First (Always Available)
 
-**CRITICAL:** The MCP Resource is ALWAYS enabled and never disabled - no tool enablement needed. This is the primary way agents inspect Unity:
+**CRITICAL:** The MCP Resource is ALWAYS enabled and never disabled - no tool enablement needed. This is the primary way agents inspect Unity.
 
-- **Command:** `/unity-mcp-scene-info {path}`
-- **Returns:** components, properties, children, transform data
-- **Example:** `/unity-mcp-scene-info GameplayScene/TileManager`
+**How to Access** (works for all agents including subagents):
+
+```text
+Tool: ReadMcpResourceTool
+Server: ai-game-developer
+URI: unity://gameobject/{scene}/{path}
+```
+
+**Example**:
+
+```json
+{
+  "server": "ai-game-developer",
+  "uri": "unity://gameobject/GameplayScene/TileManager"
+}
+```
+
+**Returns**: Transform, components, properties, children
+
+**Resource vs Tools Decision Table**:
+
+| Need                    | Use                             |
+| ----------------------- | ------------------------------- |
+| Inspect scene structure | MCP Resource (always available) |
+| Read component values   | MCP Resource (always available) |
+| Create/modify objects   | MCP Tools (require enablement)  |
+| Run tests               | MCP Tools (require enablement)  |
 
 Most agents should use this resource for read operations before enabling any tools.
 
@@ -98,6 +122,16 @@ skills: unity-mcp-tools, layout-sizing
 # No tools field = inherits ALL including MCP
 ---
 ```
+
+### Subagent Constraints
+
+| CAN Do                                      | CANNOT Do                              |
+| ------------------------------------------- | -------------------------------------- |
+| Use MCP Resource anytime (always available) | Run `/unity-mcp-enable` commands       |
+| Use MCP Tools when enabled by orchestrator  | Run `/unity-mcp-reset` commands        |
+| Request orchestrator enable specific groups | Enable or disable tools for themselves |
+
+**If MCP tools aren't working**: Report to orchestrator which tool groups you need enabled (e.g., "Need gameobject and component groups").
 
 ## Tool Groups Reference
 

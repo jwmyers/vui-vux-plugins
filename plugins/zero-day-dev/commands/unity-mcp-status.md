@@ -16,14 +16,14 @@ Show the current status of Unity MCP tools, including which tool groups are enab
 
 ## Process
 
-1. Read `Assets/Resources/AI-Game-Developer-Config.json`
+1. Read `C:/Users/jon/Documents/GitHub/zero-day-attack/Assets/Resources/AI-Game-Developer-Config.json`
 2. Count enabled tools per group
 3. Check resource status
 4. Display summary
 
 ## Configuration File
 
-Location: `Assets/Resources/AI-Game-Developer-Config.json`
+Location: `C:/Users/jon/Documents/GitHub/zero-day-attack/Assets/Resources/AI-Game-Developer-Config.json`
 
 ## Group Definitions
 

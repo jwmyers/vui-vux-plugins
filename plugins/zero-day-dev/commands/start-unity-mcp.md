@@ -34,11 +34,11 @@ Start the Unity MCP server using the project's startup script. The server must b
 
 ## Configuration Files
 
-| File                                             | Purpose                       |
-| ------------------------------------------------ | ----------------------------- |
-| `.mcp.json`                                      | Claude Code MCP configuration |
-| `start-mcp-server.bat`                           | Server startup script         |
-| `Assets/Resources/AI-Game-Developer-Config.json` | Unity plugin settings         |
+| File                                                                                           | Purpose                       |
+| ---------------------------------------------------------------------------------------------- | ----------------------------- |
+| `C:/Users/jon/.claude/plugins/marketplaces/vui-vux/plugins/zero-day-dev/mcp.json`              | Claude Code MCP configuration |
+| `C:/Users/jon/Documents/GitHub/zero-day-attack/start-mcp-server.bat`                           | Server startup script         |
+| `C:/Users/jon/Documents/GitHub/zero-day-attack/Assets/Resources/AI-Game-Developer-Config.json` | Unity plugin settings         |
 
 ## Notes
 
@@ -51,4 +51,4 @@ Start the Unity MCP server using the project's startup script. The server must b
 
 - If connection fails, ensure port 56688 is not in use
 - Check Windows Firewall settings
-- Verify the server executable exists in `Library/mcp-server/`
+- Verify the server executable exists in `C:/Users/jon/Documents/GitHub/zero-day-attack/Library/mcp-server/win-x64`

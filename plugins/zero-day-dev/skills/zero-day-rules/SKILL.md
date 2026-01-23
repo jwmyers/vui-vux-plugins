@@ -1,7 +1,7 @@
 ---
 name: zero-day-rules
 description: This skill should be used when the user asks about "game rules", "scoring", "phases", "Attack token", "Exploit token", "Ghost token", "tile placement rules", "path matching", "movement rules", "winning conditions", "turn actions", "firewall breach", "path segments", "edge nodes", or discusses Zero-Day Attack game mechanics and design.
-version: 0.2.0
+version: 0.3.0
 ---
 
 # Zero-Day Attack Game Rules
@@ -198,19 +198,21 @@ If tied, player with most **purple** segments wins.
 - Attack→Exploit: Automatic when Attack reaches firewall edge
 - Exploit→Ghost: First Move action after Exploit placement
 
-## Reference Files
+## Additional Resources
+
+### Reference Files
 
 This skill's `references/` folder contains:
 
-| File                 | Contains                                | Read When                           |
-| -------------------- | --------------------------------------- | ----------------------------------- |
-| `complete-rules.md`  | Full original rules with all details    | Need comprehensive rule reference   |
-| `diagrams/`          | 19 SVG diagrams for rules visualization | Visual explanation needed           |
-| `phase-mechanics.md` | Attack→Exploit→Ghost transitions        | Implementing phase logic            |
-| `tile-system.md`     | 25 tiles, edge nodes, path segments     | Working with tile data/placement    |
-| `token-system.md`    | 3 tokens per player, placement rules    | Token positioning or movement       |
-| `action-system.md`   | Draw, Discard, Steal, Place, Move       | Implementing player actions         |
-| `scoring-endgame.md` | Win conditions, path counting           | Implementing scoring/game end       |
+| File                 | Content                                 |
+| -------------------- | --------------------------------------- |
+| `complete-rules.md`  | Full original rules with diagrams       |
+| `diagrams/`          | 19 SVG diagrams for rules visualization |
+| `phase-mechanics.md` | Attack→Exploit→Ghost transitions        |
+| `tile-system.md`     | 25 tiles, edge nodes, path segments     |
+| `token-system.md`    | 3 tokens per player, placement rules    |
+| `action-system.md`   | Draw, Discard, Steal, Place, Move       |
+| `scoring-endgame.md` | Win conditions, path counting           |
 
 > **Important**: The official rulebook describes the original physical game with a **portrait orientation** (Blue at top, Red at bottom). The digital Board SDK implementation uses **landscape orientation** (Blue on left, Red on right) to fit the 1920×1080 display. Game mechanics are identical; only the physical layout differs.
 
@@ -220,4 +222,4 @@ This skill's `references/` folder contains:
 - Movement validation (path continuity)
 - Score calculation (path finding between tokens)
 
-Request consultation from the `code-architect` agent or the `project-architecture` skill for C# code examples of these algorithms.
+Request consultation from the `code-architecht` subagent or the `project-architecture` skill for C# code examples of these algorithms.

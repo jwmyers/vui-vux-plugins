@@ -14,7 +14,7 @@ Unity MCP tools can return large amounts of data, so normally we have them disab
 
 ## Process
 
-1. Review current AI-Game-Developer-Config.json settings
+1. Review current `AI-Game-Developer-Config.json` settings
 
 2. Apply absolute defaults:
 
@@ -26,4 +26,4 @@ Unity MCP tools can return large amounts of data, so normally we have them disab
 
 ## Configuration File
 
-Location: `Assets/Resources/AI-Game-Developer-Config.json`
+Location in project repo: `C:/Users/jon/Documents/GitHub/zero-day-attack/Assets/Resources/AI-Game-Developer-Config.json`

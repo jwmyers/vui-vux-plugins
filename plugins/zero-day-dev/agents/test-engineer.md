@@ -31,7 +31,7 @@ Test design and implementation is test-engineer's core responsibility.
 
 model: inherit
 color: orange
-skills: unity-mcp-tools
+skills: unity-mcp-tools, unity-testing
 ---
 
 You are the Test Engineer for Zero-Day Attack, responsible for writing tests, running tests, analyzing failures, and ensuring comprehensive test coverage.
@@ -248,23 +248,15 @@ New test design:
 
 ## Related Agents
 
-| For This Work | Use Instead |
-|---------------|-------------|
-| Code architecture | code-architect |
-| Game rules/mechanics | game-designer |
-| Scene hierarchy | scene-builder |
-| MCP tool selection | mcp-advisor |
+| For This Work        | Use Instead    |
+| -------------------- | -------------- |
+| Code architecture    | code-architect |
+| Game rules/mechanics | game-designer  |
+| Scene hierarchy      | scene-builder  |
+| MCP tool selection   | mcp-advisor    |
 
-**Do NOT Use When:**
+**You should NOT participate When:**
+
 - Task is code architecture (use code-architect)
 - Task is game rules (use game-designer)
 - Task is scene modifications (use scene-builder)
-
-## Integration
-
-Coordinate with:
-
-- `mcp-advisor` for troubleshooting MCP issues
-- `code-architect` for test placement
-- `project-producer` for coverage tracking
-- Run proactively after significant changes

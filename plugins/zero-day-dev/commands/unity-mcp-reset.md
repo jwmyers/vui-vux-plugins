@@ -17,7 +17,7 @@ After completing MCP operations (scene modifications, testing, etc.), use this c
 
 ## Usage
 
-```
+```text
 /unity-mcp-reset
 ```
 
@@ -50,7 +50,7 @@ Location: `Assets/Resources/AI-Game-Developer-Config.json`
 - After scene-builder completes modifications
 - After test-engineer runs tests
 - After any MCP tool operation
-- When mcp-advisor suggests cleanup
+- When mcp-coordinator suggests cleanup
 
 ## Output Format
 

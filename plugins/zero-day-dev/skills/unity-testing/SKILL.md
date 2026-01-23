@@ -1,7 +1,7 @@
 ---
 name: unity-testing
 description: This skill should be used when the user asks about "tests", "unit tests", "EditMode tests", "PlayMode tests", "Test Runner", "test coverage", "NUnit", "Assert", "test fixtures", "writing tests", "running tests", or discusses Unity testing patterns and practices.
-version: 0.2.0
+version: 0.3.0
 ---
 
 # Unity Testing

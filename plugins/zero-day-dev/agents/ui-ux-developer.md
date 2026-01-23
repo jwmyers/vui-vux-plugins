@@ -55,9 +55,19 @@ You are the UI/UX Developer for Zero-Day Attack, responsible for layout, sizing,
 
 ## MCP Access
 
-**For scene inspection**: Use MCP Resource via `/unity-mcp-scene-info {path}` - always available without tool enablement. This lets you check current positions, component values, and hierarchy.
+**For scene inspection**: Use the MCP Resource - always available without tool enablement:
 
-**For scene modifications**: This agent uses MCP tools directly when tools are enabled. The main orchestrator enables tools before spawning this agent.
+```text
+Tool: ReadMcpResourceTool
+Server: ai-game-developer
+URI: unity://gameobject/{scene}/{path}
+```
+
+This lets you check current positions, component values, and hierarchy.
+
+**For scene modifications**: This agent uses MCP tools directly when enabled.
+
+**Requires**: gameobject, component tool groups (enabled by orchestrator before spawning this agent)
 
 ## Display Configuration
 
@@ -171,24 +181,16 @@ When implementing feedback:
 
 ## Related Agents
 
-| For This Work | Use Instead |
-|---------------|-------------|
-| Code architecture | code-architect |
-| Game rules/mechanics | game-designer |
-| Touch/input handling | input-developer |
-| Scene hierarchy changes | scene-builder |
-| MCP tool selection | mcp-advisor |
+| For This Work           | Use Instead     |
+| ----------------------- | --------------- |
+| Code architecture       | code-architect  |
+| Game rules/mechanics    | game-designer   |
+| Touch/input handling    | input-developer |
+| Scene hierarchy changes | scene-builder   |
+| MCP tool selection      | mcp-advisor     |
 
-**Do NOT Use When:**
+**You should NOT participate When:**
+
 - Task is code architecture (use code-architect)
 - Task is game rules/mechanics (use game-designer)
 - Task is Board SDK input (use input-developer)
-
-## Integration
-
-Coordinate with:
-
-- `mcp-advisor` for troubleshooting MCP issues
-- `scene-builder` for GameObject modifications
-- `input-developer` for touch feedback integration
-- Use MCP Resource directly for layout inspection (no coordination needed)

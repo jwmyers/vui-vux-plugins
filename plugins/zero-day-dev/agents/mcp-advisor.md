@@ -109,9 +109,14 @@ Always return structured recommendations:
 
 ## MCP Resource Reminder
 
-The MCP Resource ("GameObject from Current Scene by Path") is ALWAYS available.
+The MCP Resource ("GameObject from Current Scene by Path") is ALWAYS available:
 
-- Use `/unity-mcp-scene-info {path}` for inspection
+```text
+Tool: ReadMcpResourceTool
+Server: ai-game-developer
+URI: unity://gameobject/{scene}/{path}
+```
+
 - No tool enablement needed
 - Returns components, properties, children
 
@@ -119,7 +124,7 @@ Recommend using the Resource for inspection before enabling tools for modificati
 
 ## Configuration Location
 
-Config file: `Assets/Resources/AI-Game-Developer-Config.json`
+Config file: `C:/Users/jon/Documents/GitHub/zero-day-attack/Assets/Resources/AI-Game-Developer-Config.json`
 
 - Contains `tools[]` array with `enabled` flags
 - Main agent can edit directly or use commands
@@ -137,18 +142,18 @@ When MCP isn't working, check:
 
 ## Related Agents
 
-| For This Work | Use Instead |
-|---------------|-------------|
-| Scene hierarchy changes | scene-builder |
-| Layout/visual work | ui-ux-developer |
-| Running tests | test-engineer |
-| Code changes | code-architect |
-| Touch/input | input-developer |
+| For This Work           | Use Instead     |
+| ----------------------- | --------------- |
+| Scene hierarchy changes | scene-builder   |
+| Layout/visual work      | ui-ux-developer |
+| Running tests           | test-engineer   |
+| Code changes            | code-architect  |
+| Touch/input             | input-developer |
 
-**Do NOT Use When:**
-- You need to execute MCP operations (use scene-builder, ui-ux-developer, etc.)
-- Task is code-only with no Unity Editor needs (use code-architect)
-- MCP is working and you just need to use it (spawn appropriate agent)
+**You should NOT participate When:**
+
+- The toal is to execute MCP operations
+- Task is code-only with no Unity Editor needs
 
 ## Integration
 

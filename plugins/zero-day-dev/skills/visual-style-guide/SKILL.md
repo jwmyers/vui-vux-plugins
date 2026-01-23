@@ -1,7 +1,7 @@
 ---
 name: visual-style-guide
 description: This skill should be used when the user asks about "colors", "hex codes", "path colors", "tile background", "rendering order", "sorting order", "token design", "SVG styling", "stroke width", "line cap", "grid lines", "glow effect", "visual style", or discusses Zero-Day Attack visual design and styling.
-version: 0.2.0
+version: 0.3.0
 ---
 
 # Visual Style Guide
@@ -265,7 +265,7 @@ Enter hex values directly: `#FF2244`, `#44BBFF`, etc.
 
 ## Additional Resources
 
-## Reference Files
+### Reference Files
 
 This skill's `references/` folder contains:
 
@@ -277,7 +277,7 @@ This skill's `references/` folder contains:
 | `token-designs.md`      | Attack/Exploit/Ghost visual specs  | Designing or updating token visuals |
 | `tile-styling.md`       | Tile background, path rendering    | Styling tile graphics               |
 
-## Project Files
+### Project Files
 
 - **Assets/Tiles/** - Reference existing tile SVGs
 - **Assets/Tokens/** - Reference existing token SVGs

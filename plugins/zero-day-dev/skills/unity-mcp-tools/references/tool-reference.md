@@ -1,6 +1,6 @@
 # Unity MCP Tool Reference
 
-Complete reference for all 49 Unity MCP tools organized by category.
+Complete reference for all 50 Unity MCP tools organized by category.
 
 ## Scene Operations
 

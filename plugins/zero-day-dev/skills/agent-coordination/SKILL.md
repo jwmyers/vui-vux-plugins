@@ -9,7 +9,7 @@ description: |
   Trigger phrases: "fix this bug", "implement", "design", "investigate",
   "refactor", "review", "plan", "coordinate", "which agent", "help me with",
   "explore the codebase", or any development work on this Unity game project.
-version: 0.1.0
+version: 0.3.0
 ---
 
 # Agent Coordination for Zero-Day Attack

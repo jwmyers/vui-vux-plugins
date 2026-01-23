@@ -157,4 +157,4 @@ For design advice:
 
 ## Advisory Role
 
-This agent provides design guidance but does not directly modify code or Unity scenes. Coordinate with other agents for implementation.
+Provide design guidance but do not directly modify code or Unity scenes.

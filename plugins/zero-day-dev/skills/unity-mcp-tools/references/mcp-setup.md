@@ -8,17 +8,17 @@ MCP Client (Claude) <--stdio/http--> Unity-MCP-Server <--SignalR--> Unity-MCP-Pl
 
 ## Startup Order (Critical)
 
-1. **Run `start-mcp-server.bat`** - MUST be first, keep window open
+1. **Run `start-mcp-server.bat`** in the project root- MUST be first, keep window open
 2. **Open Unity Editor** - Plugin auto-connects (keepConnected: true)
 3. **Open Claude Code** - Run `/mcp` to verify connection
 
 ## Configuration Files
 
-| File                                             | Purpose                       |
-| ------------------------------------------------ | ----------------------------- |
-| `.mcp.json`                                      | Claude Code MCP server config |
-| `Assets/Resources/AI-Game-Developer-Config.json` | Unity plugin settings         |
-| `start-mcp-server.bat`                           | Server startup script         |
+| File                                                                                           | Purpose                       |
+| ---------------------------------------------------------------------------------------------- | ----------------------------- |
+| `C:/Users/jon/.claude/plugins/marketplaces/vui-vux/plugins/zero-day-dev/mcp.json`              | Claude Code MCP server config |
+| `C:/Users/jon/Documents/GitHub/zero-day-attack/Assets/Resources/AI-Game-Developer-Config.json` | Unity plugin settings         |
+| `C:/Users/jon/Documents/GitHub/zero-day-attack/start-mcp-server.bat`                           | Server startup script         |
 
 ## Server Location
 
@@ -59,12 +59,12 @@ Library/mcp-server/win-x64/unity-mcp-server.exe
 1. Verify Unity Editor is running with plugin active
 2. Check port not in use by another process
 3. Check firewall settings
-4. View logs: `C:\Users\<user>\AppData\Local\claude-cli-nodejs\Cache\<project-path>`
+4. View logs
 
 ### Unity Plugin Reconnection
 
 If Unity opened before server:
 
-1. Run `start-mcp-server.bat`
+1. Run `start-mcp-server.bat` in project root
 2. Plugin auto-reconnects via `keepConnected: true`
 3. Manual: `Window > AI Game Developer (Unity-MCP)`

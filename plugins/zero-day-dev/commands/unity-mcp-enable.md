@@ -11,10 +11,10 @@ Enable specific Unity MCP tool groups to allow scene modification, testing, or o
 ## Usage
 
 ```text
-/unity-mcp-enable [group1] [group2] ...
+/unity-mcp-enable [group1] [group2]
 ```
 
-**Examples:**
+**Example command usage:**
 
 - `/unity-mcp-enable gameobject component` - Enable GameObject and component operations
 - `/unity-mcp-enable testing` - Enable test running
@@ -51,7 +51,7 @@ These tools are automatically included when enabling related groups:
 
 1. Parse requested group names from user input
 2. If no groups specified, list available groups
-3. Read `Assets/Resources/AI-Game-Developer-Config.json`
+3. Read `C:/Users/jon/Documents/GitHub/zero-day-attack/Assets/Resources/AI-Game-Developer-Config.json`
 4. For each requested group:
    - Find all tools in that group
    - Include cross-cutting utilities
@@ -61,7 +61,7 @@ These tools are automatically included when enabling related groups:
 
 ## Configuration File
 
-Location: `Assets/Resources/AI-Game-Developer-Config.json`
+Location: `C:/Users/jon/Documents/GitHub/zero-day-attack/Assets/Resources/AI-Game-Developer-Config.json`
 
 ## Group Definitions
 

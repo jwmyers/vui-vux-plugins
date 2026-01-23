@@ -1,7 +1,7 @@
 ---
 name: project-architecture
 description: This skill should be used when the user asks about "namespaces", "singleton", "TileManager", "GameManager", "TokenManager", "InputManager", "data flow", "class responsibilities", "layers", "folder structure", "code organization", "design patterns", "ScriptableObject", "databases", or discusses Zero-Day Attack codebase architecture and patterns.
-version: 0.2.0
+version: 0.3.0
 ---
 
 # Zero-Day Attack Project Architecture

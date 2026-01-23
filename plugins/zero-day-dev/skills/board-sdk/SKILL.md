@@ -1,7 +1,7 @@
 ---
 name: board-sdk
 description: This skill should be used when the user asks about "touch input", "BoardInput", "BoardContact", "piece detection", "glyph", "glyph recognition", "simulator", "Board hardware", "contact phases", "Piece Set", "touch system", "Board SDK", "multi-touch", "noise rejection", or discusses Board hardware integration and input handling.
-version: 0.2.0
+version: 0.3.0
 ---
 
 # Board SDK Integration

@@ -248,4 +248,4 @@ If issues persist:
 3. Try `/unity-mcp-reset` then re-enable specific groups
 4. Restart MCP server and Unity if needed
 
-For complex issues, spawn the `mcp-advisor` agent for expert diagnosis.
+For complex issues, spawn the `mcp-coordinator` agent for expert diagnosis.

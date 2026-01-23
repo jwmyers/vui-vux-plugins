@@ -1,7 +1,7 @@
 ---
 name: layout-sizing
 description: This skill should be used when the user asks about "layout", "sizing", "coordinates", "1920x1080", "world units", "PPU", "pixels per unit", "SVG import", "texture size", "grid positioning", "screen dimensions", "camera", "orthographic size", "reserve zones", "LayoutConfig", or discusses Board display layout and sprite sizing.
-version: 0.2.0
+version: 0.3.0
 ---
 
 # Board Layout and Sizing
